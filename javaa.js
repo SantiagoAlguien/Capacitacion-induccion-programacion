@@ -4,6 +4,8 @@ function IniciarJuego(){
     let botonMascotaJugador = document.getElementById('Selecionar-Mascota')
     botonMascotaJugador.addEventListener('click',selecionarMascotaJugador)
 }
+
+
 let NombreBicho= 0
 function selecionarMascotaJugador(){
     let imputHipodoge = document.getElementById('Hipodoge')
