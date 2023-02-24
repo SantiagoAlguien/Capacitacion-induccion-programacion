@@ -24,7 +24,7 @@ function ataqueAgua(){
     alert(ataquejugador)
 }
 function ataqueTierra(){
-    ataquejugador='AGUA'
+    ataquejugador='TIERRA'
     alert(ataquejugador)
 }
 function ataqueenemigoaleatorio(){
