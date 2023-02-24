@@ -8,17 +8,10 @@ function IniciarJuego(){
     let BotonFuego=document.getElementById('boton-fuego')
     BotonFuego.addEventListener('click', ataqueFuego)
     
-<<<<<<< HEAD
     let BotonAgua=document.getElementById('boton-agua')
     BotonAgua.addEventListener('click', ataqueAgua)
     
     let BotonTierra=document.getElementById('boton-tierra')
-=======
-    let BotonAgua=document.getElementById('boton-Agua')
-    BotonAgua.addEventListener('click', ataqueAgua)
-    
-    let BotonTierra=document.getElementById('boton-Tierra')
->>>>>>> 19b8e9ce49f298e32aa5e490b5e8a858dd787cb8
     BotonTierra.addEventListener('click', ataqueTierra)
 }
 
@@ -27,19 +20,11 @@ function ataqueFuego(){
     alert(ataquejugador)
 }
 function ataqueAgua(){
-<<<<<<< HEAD
     ataqueJugador='AGUA'
     alert(ataquejugador)
 }
 function ataqueTierra(){
     ataquejugador='AGUA'
-=======
-    ataquejugador='AGUA'
-    alert(ataquejugador)
-}
-function ataqueTierra(){
-    ataquejugador='TIERRA'
->>>>>>> 19b8e9ce49f298e32aa5e490b5e8a858dd787cb8
     alert(ataquejugador)
 }
 function ataqueenemigoaleatorio(){
@@ -83,10 +68,4 @@ return Math.floor(Math.random() * (max-min+1)+ min )}
 
 window.addEventListener("load",IniciarJuego)
 
-<<<<<<< HEAD
-
-
-//este es el capitulo 18 de plazi   
-=======
 //este es el capitulo 18 de plazi
->>>>>>> 19b8e9ce49f298e32aa5e490b5e8a858dd787cb8
