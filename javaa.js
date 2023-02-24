@@ -8,10 +8,10 @@ function IniciarJuego(){
     let BotonFuego=document.getElementById('boton-fuego')
     BotonFuego.addEventListener('click', ataqueFuego)
     
-    let BotonAgua=document.getElementById('boton-agua')
+    let BotonAgua=document.getElementById('boton-Agua')
     BotonAgua.addEventListener('click', ataqueAgua)
     
-    let BotonTierra=document.getElementById('boton-tierra')
+    let BotonTierra=document.getElementById('boton-Tierra')
     BotonTierra.addEventListener('click', ataqueTierra)
 }
 
@@ -20,7 +20,7 @@ function ataqueFuego(){
     alert(ataquejugador)
 }
 function ataqueAgua(){
-    ataqueJugador='AGUA'
+    ataquejugador='AGUA'
     alert(ataquejugador)
 }
 function ataqueTierra(){
