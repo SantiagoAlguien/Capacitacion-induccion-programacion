@@ -27,17 +27,6 @@ function ataqueTierra(){
     ataquejugador='TIERRA'
     ataqueEnemigoAleatorio()
 }
-function ataqueEnemigoAleatorio(){
-    let ataqueAleatorio = aleatorio(1,3)
-
-    if(ataqueAleatorio== 1){
-        ataqueenemigo='AGUA'
-    } else if (ataqueAleatorio== 2){
-        ataqueenemigo='FUEGO'
-    }else if (ataqueAleatorio== 3){
-        ataqueenemigo='TIERRA'}
-        
-}
 
 function selecionarMascotaJugador(){
     let imputHipodoge = document.getElementById('Hipodoge')
@@ -68,10 +57,28 @@ if(mascotaAleatoria== 1){
     spanEnemigo.innerHTML='Ratatopo'
 }}
 
+function ataqueEnemigoAleatorio(){
+    let ataqueAleatorio = aleatorio(1,3)
+
+    if(ataqueAleatorio== 1){
+        ataqueenemigo='AGUA'
+    } else if (ataqueAleatorio== 2){
+        ataqueenemigo='FUEGO'
+    }else{ataqueenemigo='TIERRA'
+        
+    }
+    crearMensaje()
+}
+
+function crearMensaje(){
+let sectionMensajes=document.getElementById('Mensajes')
+let parrafo=document.createElement('p')
+parrafo.innerHTML='Tu mascota atacó con '+ataquejugador+', las mascota del enemigo atacó con '+ataqueenemigo+'- PENDIENTE'
+sectionMensajes.appendChild(parrafo)}
 
 function aleatorio(min,max){
 return Math.floor(Math.random() * (max-min+1)+ min )}
 
-window.addEventListener("load",IniciarJuego)
+window.addEventListener('load',IniciarJuego)
 
 //este es el capitulo 18 de plazi
