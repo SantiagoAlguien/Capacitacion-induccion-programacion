@@ -17,21 +17,26 @@ function IniciarJuego(){
 
 function ataqueFuego(){
     ataquejugador='FUEGO'
-    alert(ataquejugador)
+    ataqueEnemigoAleatorio()
 }
 function ataqueAgua(){
     ataquejugador='AGUA'
-    alert(ataquejugador)
+    ataqueEnemigoAleatorio()
 }
 function ataqueTierra(){
     ataquejugador='TIERRA'
-    alert(ataquejugador)
+    ataqueEnemigoAleatorio()
 }
-function ataqueenemigoaleatorio(){
-    let ataqueenemigoaleatorio= aleatorio(1,3)
-    if(ataqueenemigoaleatorio== 1){ataqueenemigo='AGUA'}
-    else if (ataqueenemigoaleatorio== 2){ataqueenemigo='FUEGO'}
-    else if (ataqueenemigoaleatorio== 3){ataqueenemigo='TIERRA'}
+function ataqueEnemigoAleatorio(){
+    let ataqueAleatorio = aleatorio(1,3)
+
+    if(ataqueAleatorio== 1){
+        ataqueenemigo='AGUA'
+    } else if (ataqueAleatorio== 2){
+        ataqueenemigo='FUEGO'
+    }else if (ataqueAleatorio== 3){
+        ataqueenemigo='TIERRA'}
+        
 }
 
 function selecionarMascotaJugador(){
@@ -53,15 +58,16 @@ function selecionarMascotaJugador(){
     eleccionarMascotaEnemigo()
 }
 function eleccionarMascotaEnemigo(){
-let mascotaaleatoria = aleatorio(1,3) 
+let mascotaAleatoria = aleatorio(1,3) 
 let spanEnemigo = document.getElementById('Mascota-enemigo')
-if(mascotaaleatoria== 1){
+if(mascotaAleatoria== 1){
     spanEnemigo.innerHTML='Hipodoge'
-}else if(mascotaaleatoria==2){
+}else if(mascotaAleatoria==2){
     spanEnemigo.innerHTML='Capipepo'
-}else if(mascotaaleatoria==3){
+}else if(mascotaAleatoria==3){
     spanEnemigo.innerHTML='Ratatopo'
 }}
+
 
 function aleatorio(min,max){
 return Math.floor(Math.random() * (max-min+1)+ min )}
