@@ -24,6 +24,7 @@ botonAgua.addEventListener('click',ataqueAgua)
 
 let botonTierra=document.getElementById('boton-tierra')
 botonTierra.addEventListener('click',ataqueTierra)
+
 let botonReiniciar=document.getElementById('boton-reiniciar')
 botonReiniciar.addEventListener('click',reiniciarJuego )
 }
@@ -96,6 +97,13 @@ function revsisarVidas(){
         alert("PERDISTE")
         crearMensajeFinal("Perdio")
     }
+    var miElemento = document.getElementById('Vidas-jugador');
+    var miVariable = +VidasJugagor+''
+    miElemento.innerHTML = miVariable;
+
+    var miElemento = document.getElementById('Vidas-enemigo');
+    var miVariable = +VidasEnemigo+''
+    miElemento.innerHTML = miVariable;
 }
 
 function crearMensaje(){
