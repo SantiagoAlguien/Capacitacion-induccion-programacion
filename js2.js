@@ -1,7 +1,18 @@
+
+//Valores Globabales que las funciones dan el resultado
 let ataqueJugador
 let ataqueEnemigo
+let resultado
+let VidasJugagor = 3
+let VidasEnemigo = 3
 
 function iniciarJuego(){
+let OcualtarIncio=document.getElementById('seleccionar-ataque')
+OcualtarIncio.style.display='none'
+
+let OcualtarReiniciar=document.getElementById('reiniciar')
+OcualtarReiniciar.style.display='none'
+
 let botonMascotaJugador=document.getElementById('boton-mascota')
 botonMascotaJugador.addEventListener('click',seleccionarMascotaJugador)
 
@@ -13,9 +24,14 @@ botonAgua.addEventListener('click',ataqueAgua)
 
 let botonTierra=document.getElementById('boton-tierra')
 botonTierra.addEventListener('click',ataqueTierra)
+let botonReiniciar=document.getElementById('boton-reiniciar')
+botonReiniciar.addEventListener('click',reiniciarJuego )
 }
 
 function seleccionarMascotaJugador(){
+    let OcualtarIncio=document.getElementById('seleccionar-ataque')
+    OcualtarIncio.style.display='block'
+
 let inputHipodoge=document.getElementById('hipodoge')
 let inputCapipepo=document.getElementById('capipepo')
 let inputRatatopo=document.getElementById('Ratatopo')
@@ -32,6 +48,9 @@ seleccionarMascotaEnemigo()
 }
 
 function seleccionarMascotaEnemigo(){let mascotaAleatoria=aleatorio(1,3)
+let seleccionarMascota=document.getElementById('seleccionar-mascota')
+seleccionarMascota.style.display='none'
+
 let spanMascotaEnemigo=document.getElementById('mascota-enemigo')
 if(mascotaAleatoria==1){
 spanMascotaEnemigo.innerHTML='Hipodoge'}
@@ -53,15 +72,62 @@ ataqueEnemigo='FUEGO'}
 else if(ataqueAleatorio==2){
 ataqueEnemigo='AGUA'}
 else{ataqueEnemigo='TIERRA'}
-crearMensaje()
+combate()
 }
+
+//enfrentamiendo 
+function combate() 
+{if(ataqueJugador == ataqueEnemigo){resultado='EMPATE'} 
+else if((ataqueJugador == 'AGUA' && ataqueEnemigo == 'TIERRA') || (ataqueJugador == 'FUEGO' && ataqueEnemigo == 'AGUA') || (ataqueJugador == 'TIERRA' && ataqueEnemigo == 'FUEGO')){resultado=('GANASTE')
+VidasEnemigo--
+} 
+else {resultado =('PERDISTE')
+VidasJugagor--
+}
+crearMensaje()
+revsisarVidas()
+}
+
+function revsisarVidas(){
+    if(VidasEnemigo == 0){
+        alert("GANASTE")
+        crearMensajeFinal("Felicitaciones")
+    }else if (VidasJugagor ==0 ){
+        alert("PERDISTE")
+        crearMensajeFinal("Perdio")
+    }
+}
+
 function crearMensaje(){
 let sectionMensajes=document.getElementById('mensajes')
 let parrafo=document.createElement('p')
 
-parrafo.innerHTML='Tu mascota atacó con '+ataqueJugador+', las mascota del enemigo atacó con '+ataqueEnemigo+'- PENDIENTE'
+parrafo.innerHTML='Tu mascota atacó con '+ataqueJugador+', las mascota del enemigo atacó con '+ataqueEnemigo+' y el resultado es '+resultado+''
 sectionMensajes.appendChild(parrafo)}
 
+function crearMensajeFinal(resultadoFinal){
+    let sectionMensajes=document.getElementById('mensajes')
+    let parrafo=document.createElement('p')
+    
+    parrafo.innerHTML= resultadoFinal
+    sectionMensajes.appendChild(parrafo)
+
+    let botonFuego=document.getElementById('boton-fuego')
+    botonFuego.disabled = true
+
+    let botonAgua=document.getElementById('boton-agua')
+    botonAgua.disabled = true
+
+    let botonTierra=document.getElementById('boton-tierra')
+    botonTierra.disabled = true
+
+    let OcualtarReiniciar=document.getElementById('reiniciar')
+    OcualtarReiniciar.style.display='block'
+}
+
+function reiniciarJuego(){
+    location.reload()
+}
 function aleatorio(min,max){return Math.floor(Math.random()*(max-min+1)+min)}
 
 window.addEventListener('load',iniciarJuego)
