@@ -1,12 +1,21 @@
 .titulo {
-    color: rgb(255, 0, 0); 
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgb(32, 11, 169); 
     opacity: 10;
     width: 500;
     height: 50;
     background-color: rgb(30, 161, 91);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 5px;
 }
 
-.fondo {background-color: rgb(255, 255, 255);}
+.fondo {background-color: rgb(195, 192, 192);}
 
 #seleccionar-mascota{
     display: flex;
@@ -14,4 +23,33 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    display: flex;
+    gap: 10px;
+    
+}
+
+.clases-botones{
+    width: 140px;
+    height: 48px;
+    background-color: brown;
+    padding: 24px;
+    box-sizing: border-box;
+    margin: 2px;
+    border: 2px solid;
+    color: black;
+}
+
+input{
+    display: none;
+}
+
+button{    
+    width: 162px;
+    height: 40px;
+    background-color: #6065c3;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 18px;
+    border: 2px solid;
+    color: #10e985;
 }
