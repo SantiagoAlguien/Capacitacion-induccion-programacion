@@ -10,24 +10,24 @@
             <div class="Cajapadre"><h1 class="titulo">POKEMON MAS PEOR! 🔥💧🌱</h1></div>
             <div class="subtitulo"><h2>Elige tu mascota:</h2></div>
         
-            <div class="botones">
+            <div class="botones-encerrados">
+                <input type="radio" name="mascota" id="hipodoge"/>
                 <label class="clases-botones" for="hipodoge">
                     <p>hipodoge</p>
                     <img src="./assets/mokepons_mokepon_hipodoge_attack.png" alt="hipodoge">
                 </label>
-                <input type="radio" name="mascota" id="hipodoge"/>
                 
+                <input type="radio" name="mascota" id="capipepo"/>
                 <label class="clases-botones" for="capipepo">
                     <p>Capipepo</p>
                     <img src="./assets/mokepons_mokepon_capipepo_attack.png" alt="capipepo">
-                </label>
-                <input type="radio" name="mascota" id="capipepo"/>
+                </label>                
 
+                <input type="radio" name="mascota" id="Ratatopo"/>
                 <label class="clases-botones" for="Ratatopo">
                     <p>Ratatopo</p>
                     <img src="./assets/mokepons_mokepon_Ratatopo_attack.png" alt="Ratatopo">
-                </label>
-                <input type="radio" name="mascota" id="Ratatopo"/>
+                </label>                
             </div>
             <button id="boton-mascota">Seleccionar</button>
         </section>
@@ -35,7 +35,7 @@
         <section id="seleccionar-ataque">
             <h1 class="titulo">POKEMON</h1>
             <div class="subtitulo"><h2>Elige tu ataque:</h2></div>
-            <div>
+            <div class="tarjetas-ataque">
                 <button id="boton-fuego" class="Boton-de-ataque">Fuego 🔥</button>
                 <button id="boton-agua" class="Boton-de-ataque">Agua 💧</button>
                 <button id="boton-tierra" class="Boton-de-ataque">Tierra 🌱</button>
@@ -49,15 +49,17 @@
                     <p id="resultado">Mucha suerte con un bot</p>
                 </div>
 
-            <div>
-                <div>
+            <div class="ataque">
+                <div class="mostrar-jugador">
+                    <p id="Vidas-jugador">3</p>
+                    <p id="mascota-jugador"></p>
                     <p id="ataque-del-jugador"></p>
-                    <p>Tu mascota <span id="mascota-jugador"></span> tiene <span id="Vidas-jugador">3</span> vida</p>
+
                 </div>
-                
-                <div>
-                    <p id="resultado-del-enemigo"></p>
-                    <p>La mascota <span id="mascota-enemigo"></span> del enemigo tiene <span id="Vidas-enemigo">3</span> vida</p>
+                <div class="mostrar-enemigo">
+                    <p id="Vidas-enemigo">3</p>
+                    <p id="mascota-enemigo"></p>
+                    <p id="ataque-del-enemigo"></p>
                 </div>
             </div>
         </section>

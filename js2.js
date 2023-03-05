@@ -109,7 +109,7 @@ function revsisarVidas(){
 function crearMensaje(){
 let sectionMensajes=document.getElementById('resultado')
 let ataqueDelJugador=document.getElementById('ataque-del-jugador')
-let ataqueDelEnemigo=document.getElementById('resultado-del-enemigo')
+let ataqueDelEnemigo=document.getElementById('ataque-del-enemigo')
 
 
 let nuevoataqueDelJugador=document.createElement('p')
