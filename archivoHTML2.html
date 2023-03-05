@@ -1,59 +1,57 @@
 <html>
-<head>
-<meta charset="utf-8" />
-<title>copia pirata de pokemon!</title>
-<script src="./js2.js"></script>
-<link rel="stylesheet" href="./Estilos.css">
-</head>
-<body class="fondo">
-    
-    
-    <section id="seleccionar-mascota">
-    
-    <div class="Cajapadre"><h1 class="titulo">POKEMON MAS PEOR! 🔥💧🌱</h1></div>
-    <div class="subtitulo"><h2>Elige tu mascota:</h2></div>
-    
-    <div class="botones">
-    <label class="clases-botones" for="hipodoge">
-        <p>hipodoge</p>
-        <img src="./assets/mokepons_mokepon_hipodoge_attack.png" alt="hipodoge">
-    </label>
-    <input type="radio" name="mascota" id="hipodoge" />
-    <label class="clases-botones" for="capipepo">
-        <p>Capipepo</p>
-        <img src="./assets/mokepons_mokepon_capipepo_attack.png" alt="capipepo">
-    </label>
-    <input type="radio" name="mascota" id="capipepo" />
-    <label class="clases-botones" for="Ratatopo">
-        <p>Ratatopo</p>
-        <img src="./assets/mokepons_mokepon_Ratatopo_attack.png" alt="Ratatopo">
-    </label>
-    <input type="radio" name="mascota" id="Ratatopo" />
-    </div>   
-    <button id="boton-mascota">Seleccionar</button>
-    
-    </section>
-    
-    <section id="seleccionar-ataque">
-    <h1 class="titulo">POKEMON MAS PEOR! 🔥💧🌱</h1>
-    <h2>Elige tu ataque:</h2>
-    <p>Tu mascota <span id="mascota-jugador"></span> tiene <span id="Vidas-jugador">3</span> vida</p>
-    <p>La mascota <span id="mascota-enemigo"></span> del enemigo tiene <span id="Vidas-enemigo">3</span> vida</p>
-    
-    <p>
-    <button id="boton-fuego">Fuego 🔥</button>
-    <button id="boton-agua">Agua 💧</button>
-    <button id="boton-tierra">Tierra 🌱</button>
-    </p>
-    </section>
-    
-    <section id="mensajes">
-    </section>
-    
-    
-    <section id="reiniciar">
-    <button id="boton-reiniciar">Reiniciar</button>
-    </section>
+    <head>
+        <meta charset="utf-8" />
+        <title>copia pirata de pokemon!</title>
+        <script src="./js2.js"></script>
+        <link rel="stylesheet" href="./Estilos.css">
+    </head>
+    <body class="fondo">
+        <section id="seleccionar-mascota">
+            <div class="Cajapadre"><h1 class="titulo">POKEMON MAS PEOR! 🔥💧🌱</h1></div>
+            <div class="subtitulo"><h2>Elige tu mascota:</h2></div>
+        
+            <div class="botones">
+                <label class="clases-botones" for="hipodoge">
+                    <p>hipodoge</p>
+                    <img src="./assets/mokepons_mokepon_hipodoge_attack.png" alt="hipodoge">
+                </label>
+                <input type="radio" name="mascota" id="hipodoge"/>
+                
+                <label class="clases-botones" for="capipepo">
+                    <p>Capipepo</p>
+                    <img src="./assets/mokepons_mokepon_capipepo_attack.png" alt="capipepo">
+                </label>
+                <input type="radio" name="mascota" id="capipepo"/>
 
-</body>
+                <label class="clases-botones" for="Ratatopo">
+                    <p>Ratatopo</p>
+                    <img src="./assets/mokepons_mokepon_Ratatopo_attack.png" alt="Ratatopo">
+                </label>
+                <input type="radio" name="mascota" id="Ratatopo"/>
+            </div>
+            <button id="boton-mascota">Seleccionar</button>
+        </section>
+    
+        <section id="seleccionar-ataque">
+            <h1 class="titulo">POKEMON MAS PEOR! 🔥💧🌱</h1>
+            <h2>Elige tu ataque:</h2>
+            
+            <div>
+                <button id="boton-fuego">Fuego 🔥</button>
+                <button id="boton-agua">Agua 💧</button>
+                <button id="boton-tierra">Tierra 🌱</button>
+            </div>
+
+            <div>    
+                <section id="mensajes"></section>
+                <section id="reiniciar">
+                    <button id="boton-reiniciar">Reiniciar</button>
+                </section>
+            </div>
+            <div>
+                <p>Tu mascota <span id="mascota-jugador"></span> tiene <span id="Vidas-jugador">3</span> vida</p>
+                <p>La mascota <span id="mascota-enemigo"></span> del enemigo tiene <span id="Vidas-enemigo">3</span> vida</p>
+            </div>
+        </section>
+    </body>
 </html>
