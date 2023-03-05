@@ -31,7 +31,7 @@ botonReiniciar.addEventListener('click',reiniciarJuego )
 
 function seleccionarMascotaJugador(){
     let OcualtarIncio=document.getElementById('seleccionar-ataque')
-    OcualtarIncio.style.display='block'
+    OcualtarIncio.style.display='flex'
 
 let inputHipodoge=document.getElementById('hipodoge')
 let inputCapipepo=document.getElementById('capipepo')
@@ -92,10 +92,10 @@ revsisarVidas()
 function revsisarVidas(){
     if(VidasEnemigo == 0){
         alert("GANASTE")
-        crearMensajeFinal("Felicitaciones")
+        crearMensajeFinal("Felicitaciones, Ganaste :)")
     }else if (VidasJugagor ==0 ){
         alert("PERDISTE")
-        crearMensajeFinal("Perdio")
+        crearMensajeFinal("Perdiste :(")
     }
     var miElemento = document.getElementById('Vidas-jugador');
     var miVariable = +VidasJugagor+''
@@ -107,11 +107,21 @@ function revsisarVidas(){
 }
 
 function crearMensaje(){
-let sectionMensajes=document.getElementById('mensajes')
-let parrafo=document.createElement('p')
+let sectionMensajes=document.getElementById('resultado')
+let ataqueDelJugador=document.getElementById('ataque-del-jugador')
+let ataqueDelEnemigo=document.getElementById('resultado-del-enemigo')
 
-parrafo.innerHTML='Tu mascota atacó con '+ataqueJugador+', las mascota del enemigo atacó con '+ataqueEnemigo+' y el resultado es '+resultado+''
-sectionMensajes.appendChild(parrafo)}
+
+let nuevoataqueDelJugador=document.createElement('p')
+let nuevoataqueDelEnemigo=document.createElement('p')
+
+sectionMensajes.innerHTML= resultado
+ataqueDelJugador.innerHTML= ataqueJugador
+ataqueDelEnemigo.innerHTML= ataqueEnemigo
+
+ataqueDelJugador.appendChild(nuevoataqueDelJugador)
+ataqueDelEnemigo.appendChild(nuevoataqueDelEnemigo)
+}
 
 function crearMensajeFinal(resultadoFinal){
     let sectionMensajes=document.getElementById('mensajes')
@@ -131,6 +141,9 @@ function crearMensajeFinal(resultadoFinal){
 
     let OcualtarReiniciar=document.getElementById('reiniciar')
     OcualtarReiniciar.style.display='block'
+
+    let Ocualtarresultado=document.getElementById('resultado')
+    Ocualtarresultado.style.display='none'
 }
 
 function reiniciarJuego(){

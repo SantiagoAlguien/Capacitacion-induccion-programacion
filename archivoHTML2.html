@@ -33,24 +33,32 @@
         </section>
     
         <section id="seleccionar-ataque">
-            <h1 class="titulo">POKEMON MAS PEOR! 🔥💧🌱</h1>
-            <h2>Elige tu ataque:</h2>
+            <h1 class="titulo">POKEMON</h1>
+            <div class="subtitulo"><h2>Elige tu ataque:</h2></div>
+            <div>
+                <button id="boton-fuego" class="Boton-de-ataque">Fuego 🔥</button>
+                <button id="boton-agua" class="Boton-de-ataque">Agua 💧</button>
+                <button id="boton-tierra" class="Boton-de-ataque">Tierra 🌱</button>
+            </div>
             
-            <div>
-                <button id="boton-fuego">Fuego 🔥</button>
-                <button id="boton-agua">Agua 💧</button>
-                <button id="boton-tierra">Tierra 🌱</button>
-            </div>
+            
+                <div id="mensajes">
+                    <section id="reiniciar">
+                        <button id="boton-reiniciar">Reiniciar</button>
+                    </section>  
+                    <p id="resultado">Mucha suerte con un bot</p>
+                </div>
 
-            <div>    
-                <section id="mensajes"></section>
-                <section id="reiniciar">
-                    <button id="boton-reiniciar">Reiniciar</button>
-                </section>
-            </div>
             <div>
-                <p>Tu mascota <span id="mascota-jugador"></span> tiene <span id="Vidas-jugador">3</span> vida</p>
-                <p>La mascota <span id="mascota-enemigo"></span> del enemigo tiene <span id="Vidas-enemigo">3</span> vida</p>
+                <div>
+                    <p id="ataque-del-jugador"></p>
+                    <p>Tu mascota <span id="mascota-jugador"></span> tiene <span id="Vidas-jugador">3</span> vida</p>
+                </div>
+                
+                <div>
+                    <p id="resultado-del-enemigo"></p>
+                    <p>La mascota <span id="mascota-enemigo"></span> del enemigo tiene <span id="Vidas-enemigo">3</span> vida</p>
+                </div>
             </div>
         </section>
     </body>
