@@ -157,12 +157,12 @@ button:active{
 
 
 /* Esto lo que hace es adaptar los elementos de la pagina a una resolucion especifica */
-@media (max-width: 460px){
+@media (max-width: 500px){
   .botones-encerrados, .tarjetas-ataque{
     flex-direction: column;
   }
 }
-@media (max-width: 460px){
+@media (max-width: 500px){
   .fondo{
     flex-direction: column;
   }
