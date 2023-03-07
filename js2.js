@@ -1,3 +1,22 @@
+let OcualtarIncio=document.getElementById('seleccionar-ataque')
+let OcualtarReiniciar=document.getElementById('reiniciar')
+let botonMascotaJugador=document.getElementById('boton-mascota')
+let botonFuego=document.getElementById('boton-fuego')
+let botonAgua=document.getElementById('boton-agua')
+let botonTierra=document.getElementById('boton-tierra')
+let botonReiniciar=document.getElementById('boton-reiniciar')
+
+let inputHipodoge=document.getElementById('hipodoge')
+let inputCapipepo=document.getElementById('capipepo')
+let inputRatatopo=document.getElementById('Ratatopo')
+let spanMascotaJugador=document.getElementById('mascota-jugador')
+
+let seleccionarMascota=document.getElementById('seleccionar-mascota')
+let spanMascotaEnemigo=document.getElementById('mascota-enemigo')
+
+let sectionMensajes=document.getElementById('resultado')
+let ataqueDelJugador=document.getElementById('ataque-del-jugador')
+let ataqueDelEnemigo=document.getElementById('ataque-del-enemigo')
 
 
 //El código comienza definiendo varias variables globales, incluidas las variables para almacenar el valor de los ataques de jugador y enemigo, el resultado del combate y el número de vidas para cada jugador.
@@ -10,37 +29,32 @@ let VidasEnemigo = 3
 
 //El código comienza definiendo varias variables globales, incluidas las variables para almacenar el valor de los ataques de jugador y enemigo, el resultado del combate y el número de vidas para cada jugador.
 function iniciarJuego(){
-let OcualtarIncio=document.getElementById('seleccionar-ataque')
+
 OcualtarIncio.style.display='none'
 
-let OcualtarReiniciar=document.getElementById('reiniciar')
+
 OcualtarReiniciar.style.display='none'
 
-let botonMascotaJugador=document.getElementById('boton-mascota')
+
 botonMascotaJugador.addEventListener('click',seleccionarMascotaJugador)
 
-let botonFuego=document.getElementById('boton-fuego')
+
 botonFuego.addEventListener('click',ataqueFuego)
 
-let botonAgua=document.getElementById('boton-agua')
+
 botonAgua.addEventListener('click',ataqueAgua)
 
-let botonTierra=document.getElementById('boton-tierra')
+
 botonTierra.addEventListener('click',ataqueTierra)
 
-let botonReiniciar=document.getElementById('boton-reiniciar')
+
 botonReiniciar.addEventListener('click',reiniciarJuego )
 }
 
 //seleccionarMascotaJugador(): Esta función se llama cuando el jugador selecciona su mascota. Obtiene la mascota seleccionada por el jugador y muestra los botones de ataque.
 function seleccionarMascotaJugador(){
-    let OcualtarIncio=document.getElementById('seleccionar-ataque')
-    OcualtarIncio.style.display='flex'
 
-let inputHipodoge=document.getElementById('hipodoge')
-let inputCapipepo=document.getElementById('capipepo')
-let inputRatatopo=document.getElementById('Ratatopo')
-let spanMascotaJugador=document.getElementById('mascota-jugador')
+    OcualtarIncio.style.display='flex'
 
 if(inputHipodoge.checked){
     spanMascotaJugador.innerHTML='Hipodoge'}
@@ -53,11 +67,12 @@ seleccionarMascotaEnemigo()
 }
 
 //seleccionarMascotaEnemigo(): Esta función se llama después de que el seleccione su mascota y elige una mascota aleatoria para el enemigo. Muestra el nombre de la mascota enemiga en la pantalla.
-function seleccionarMascotaEnemigo(){let mascotaAleatoria=aleatorio(1,3)
-let seleccionarMascota=document.getElementById('seleccionar-mascota')
+function seleccionarMascotaEnemigo(){
+let mascotaAleatoria=aleatorio(1,3)
+
 seleccionarMascota.style.display='none'
 
-let spanMascotaEnemigo=document.getElementById('mascota-enemigo')
+
 if(mascotaAleatoria==1){
 spanMascotaEnemigo.innerHTML='Hipodoge'}
 else if(mascotaAleatoria==2){
@@ -118,9 +133,6 @@ function revsisarVidas(){
 
 //crearMensaje(): Esta función crea un mensaje para mostrar el resultado del combate en la pantalla.
 function crearMensaje(){
-let sectionMensajes=document.getElementById('resultado')
-let ataqueDelJugador=document.getElementById('ataque-del-jugador')
-let ataqueDelEnemigo=document.getElementById('ataque-del-enemigo')
 
 
 let nuevoataqueDelJugador=document.createElement('p')
@@ -142,13 +154,13 @@ function crearMensajeFinal(resultadoFinal){
     parrafo.innerHTML= resultadoFinal
     sectionMensajes.appendChild(parrafo)
 
-    let botonFuego=document.getElementById('boton-fuego')
+    
     botonFuego.disabled = true
 
-    let botonAgua=document.getElementById('boton-agua')
+    
     botonAgua.disabled = true
 
-    let botonTierra=document.getElementById('boton-tierra')
+    
     botonTierra.disabled = true
 
     let OcualtarReiniciar=document.getElementById('reiniciar')
