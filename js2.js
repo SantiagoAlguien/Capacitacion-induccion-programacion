@@ -1,24 +1,23 @@
-let OcualtarIncio=document.getElementById('seleccionar-ataque')
-let OcualtarReiniciar=document.getElementById('reiniciar')
-let botonMascotaJugador=document.getElementById('boton-mascota')
-let botonFuego=document.getElementById('boton-fuego')
-let botonAgua=document.getElementById('boton-agua')
-let botonTierra=document.getElementById('boton-tierra')
-let botonReiniciar=document.getElementById('boton-reiniciar')
+const OcualtarIncio=document.getElementById('seleccionar-ataque')
+const OcualtarReiniciar=document.getElementById('reiniciar')
+const botonFuego=document.getElementById('boton-fuego')
+const botonMascotaJugador=document.getElementById('boton-mascota')
+const botonAgua=document.getElementById('boton-agua')
+const botonTierra=document.getElementById('boton-tierra')
+const botonReiniciar=document.getElementById('boton-reiniciar')
 
-let inputHipodoge=document.getElementById('hipodoge')
-let inputCapipepo=document.getElementById('capipepo')
-let inputRatatopo=document.getElementById('Ratatopo')
-let spanMascotaJugador=document.getElementById('mascota-jugador')
+const inputHipodoge=document.getElementById('hipodoge')
+const inputCapipepo=document.getElementById('capipepo')
+const inputRatatopo=document.getElementById('Ratatopo')
+const spanMascotaJugador=document.getElementById('mascota-jugador')
 
-let seleccionarMascota=document.getElementById('seleccionar-mascota')
-let spanMascotaEnemigo=document.getElementById('mascota-enemigo')
+const seleccionarMascota=document.getElementById('seleccionar-mascota')
+const spanMascotaEnemigo=document.getElementById('mascota-enemigo')
 
-let sectionMensajes=document.getElementById('resultado')
-let ataqueDelJugador=document.getElementById('ataque-del-jugador')
-let ataqueDelEnemigo=document.getElementById('ataque-del-enemigo')
-
-
+const sectionMensajes=document.getElementById('resultado')
+const ataqueDelJugador=document.getElementById('ataque-del-jugador')
+const ataqueDelEnemigo=document.getElementById('ataque-del-enemigo')
+const Ocualtarresultado=document.getElementById('resultado')
 //El código comienza definiendo varias variables globales, incluidas las variables para almacenar el valor de los ataques de jugador y enemigo, el resultado del combate y el número de vidas para cada jugador.
 //Valores Globabales que las funciones dan el resultado
 let ataqueJugador
@@ -163,10 +162,10 @@ function crearMensajeFinal(resultadoFinal){
     
     botonTierra.disabled = true
 
-    let OcualtarReiniciar=document.getElementById('reiniciar')
+    
     OcualtarReiniciar.style.display='block'
 
-    let Ocualtarresultado=document.getElementById('resultado')
+    
     Ocualtarresultado.style.display='none'
 }
 
