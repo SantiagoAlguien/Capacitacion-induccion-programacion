@@ -1,4 +1,6 @@
 
+
+//El código comienza definiendo varias variables globales, incluidas las variables para almacenar el valor de los ataques de jugador y enemigo, el resultado del combate y el número de vidas para cada jugador.
 //Valores Globabales que las funciones dan el resultado
 let ataqueJugador
 let ataqueEnemigo
@@ -6,6 +8,7 @@ let resultado
 let VidasJugagor = 3
 let VidasEnemigo = 3
 
+//El código comienza definiendo varias variables globales, incluidas las variables para almacenar el valor de los ataques de jugador y enemigo, el resultado del combate y el número de vidas para cada jugador.
 function iniciarJuego(){
 let OcualtarIncio=document.getElementById('seleccionar-ataque')
 OcualtarIncio.style.display='none'
@@ -29,6 +32,7 @@ let botonReiniciar=document.getElementById('boton-reiniciar')
 botonReiniciar.addEventListener('click',reiniciarJuego )
 }
 
+//seleccionarMascotaJugador(): Esta función se llama cuando el jugador selecciona su mascota. Obtiene la mascota seleccionada por el jugador y muestra los botones de ataque.
 function seleccionarMascotaJugador(){
     let OcualtarIncio=document.getElementById('seleccionar-ataque')
     OcualtarIncio.style.display='flex'
@@ -48,6 +52,7 @@ if(inputHipodoge.checked){
 seleccionarMascotaEnemigo()
 }
 
+//seleccionarMascotaEnemigo(): Esta función se llama después de que el seleccione su mascota y elige una mascota aleatoria para el enemigo. Muestra el nombre de la mascota enemiga en la pantalla.
 function seleccionarMascotaEnemigo(){let mascotaAleatoria=aleatorio(1,3)
 let seleccionarMascota=document.getElementById('seleccionar-mascota')
 seleccionarMascota.style.display='none'
@@ -60,6 +65,7 @@ spanMascotaEnemigo.innerHTML='Capipepo'}
 else{spanMascotaEnemigo.innerHTML='Ratatopo'}
 }
 
+//ataqueFuego(), ataqueAgua(), ataqueTierra(): Estas funciones se llaman cuando el jugador selecciona uno de los botones de ataque. Configuran el ataque del jugador y llaman a ataqueAleatorioEnemigo().
 function ataqueFuego(){ataqueJugador='FUEGO'
 ataqueAleatorioEnemigo()}
 function ataqueAgua(){ataqueJugador='AGUA'
@@ -67,6 +73,7 @@ ataqueAleatorioEnemigo()}
 function ataqueTierra(){ataqueJugador='TIERRA'
 ataqueAleatorioEnemigo()}
 
+//ataqueAleatorioEnemigo(): Esta función elige un ataque aleatorio para el enemigo y llama a combate().
 function ataqueAleatorioEnemigo(){let ataqueAleatorio=aleatorio(1,3)
 if(ataqueAleatorio==1){
 ataqueEnemigo='FUEGO'}
@@ -76,7 +83,9 @@ else{ataqueEnemigo='TIERRA'}
 combate()
 }
 
+
 //enfrentamiendo 
+//combate(): Esta función determina el resultado del combate y llama a crearMensaje()para mostrar el resultado en la pantalla. También llama revsisarVidas()para actualizar las vidas restantes del jugador y del enemigo.
 function combate() 
 {if(ataqueJugador == ataqueEnemigo){resultado='EMPATE'} 
 else if((ataqueJugador == 'AGUA' && ataqueEnemigo == 'TIERRA') || (ataqueJugador == 'FUEGO' && ataqueEnemigo == 'AGUA') || (ataqueJugador == 'TIERRA' && ataqueEnemigo == 'FUEGO')){resultado=('GANASTE')
@@ -89,6 +98,7 @@ crearMensaje()
 revsisarVidas()
 }
 
+//revsisarVidas(): Esta función verifica si uno de los combatientes ha perdido todas sus vidas y termina el juego si es así. Actualiza las vidas restantes del jugador y del enemigo en la pantalla.
 function revsisarVidas(){
     if(VidasEnemigo == 0){
         alert("GANASTE")
@@ -106,6 +116,7 @@ function revsisarVidas(){
     miElemento.innerHTML = miVariable;
 }
 
+//crearMensaje(): Esta función crea un mensaje para mostrar el resultado del combate en la pantalla.
 function crearMensaje(){
 let sectionMensajes=document.getElementById('resultado')
 let ataqueDelJugador=document.getElementById('ataque-del-jugador')
@@ -123,6 +134,7 @@ ataqueDelJugador.appendChild(nuevoataqueDelJugador)
 ataqueDelEnemigo.appendChild(nuevoataqueDelEnemigo)
 }
 
+//crearMensajeFinal(): Esta función crea un mensaje final para mostrar el resultado del juego en la pantalla.
 function crearMensajeFinal(resultadoFinal){
     let sectionMensajes=document.getElementById('mensajes')
     let parrafo=document.createElement('p')
@@ -146,9 +158,11 @@ function crearMensajeFinal(resultadoFinal){
     Ocualtarresultado.style.display='none'
 }
 
+//Esta funcion lo que hace es volver al inicio del juego
 function reiniciarJuego(){
     location.reload()
 }
+
 function aleatorio(min,max){return Math.floor(Math.random()*(max-min+1)+min)}
 
 window.addEventListener('load',iniciarJuego)
