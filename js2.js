@@ -19,6 +19,21 @@ const ataqueDelJugador=document.getElementById('ataque-del-jugador')
 const ataqueDelEnemigo=document.getElementById('ataque-del-enemigo')
 const Ocualtarresultado=document.getElementById('resultado')
 //El código comienza definiendo varias variables globales, incluidas las variables para almacenar el valor de los ataques de jugador y enemigo, el resultado del combate y el número de vidas para cada jugador.
+
+class Mokepon{
+    constructor(nombre, foto, vida){
+        this.nombre = nombre
+        this.foto= foto
+        this.vida=vida
+    }
+}
+
+let Hipodoge= new Mokepon('hipodoge','./assets/mokepons_mokepon_hipodoge_attack.png',5)
+
+let Capipepo= new Mokepon('capipepo','./assets/mokepons_mokepon_capipepo_attack.png',5)
+
+let Ratatopo= new Mokepon('Ratatopo','./assets/mokepons_mokepon_Ratatopo_attack.png',5)
+
 //Valores Globabales que las funciones dan el resultado
 let ataqueJugador
 let ataqueEnemigo
