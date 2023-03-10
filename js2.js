@@ -6,9 +6,6 @@ const botonAgua=document.getElementById('boton-agua')
 const botonTierra=document.getElementById('boton-tierra')
 const botonReiniciar=document.getElementById('boton-reiniciar')
 
-const inputHipodoge=document.getElementById('hipodoge')
-const inputCapipepo=document.getElementById('capipepo')
-const inputRatatopo=document.getElementById('Ratatopo')
 const spanMascotaJugador=document.getElementById('mascota-jugador')
 
 const seleccionarMascota=document.getElementById('seleccionar-mascota')
@@ -20,32 +17,69 @@ const ataqueDelEnemigo=document.getElementById('ataque-del-enemigo')
 const Ocualtarresultado=document.getElementById('resultado')
 //El código comienza definiendo varias variables globales, incluidas las variables para almacenar el valor de los ataques de jugador y enemigo, el resultado del combate y el número de vidas para cada jugador.
 
+const contenedorTarjetas = document.getElementById('contenedorTarjetas')
+
+//Valores Globabales que las funciones dan el resultado
+let mokepones=[]
+let ataqueJugador
+let ataqueEnemigo
+let resultado
+let opcionesDeMokepones 
+let inputHipodoge
+let inputCapipepo
+let inputRatatopo
+let VidasJugagor = 3
+let VidasEnemigo = 3
+
 class Mokepon{
     constructor(nombre, foto, vida){
         this.nombre = nombre
         this.foto= foto
         this.vida=vida
+        this.ataques = []
     }
 }
 
-let Hipodoge= new Mokepon('hipodoge','./assets/mokepons_mokepon_hipodoge_attack.png',5)
+let Hipodoge= new Mokepon('Hipodoge','./assets/mokepons_mokepon_hipodoge_attack.png',5)
 
 let Capipepo= new Mokepon('capipepo','./assets/mokepons_mokepon_capipepo_attack.png',5)
 
 let Ratatopo= new Mokepon('Ratatopo','./assets/mokepons_mokepon_Ratatopo_attack.png',5)
 
-//Valores Globabales que las funciones dan el resultado
-let ataqueJugador
-let ataqueEnemigo
-let resultado
-let VidasJugagor = 3
-let VidasEnemigo = 3
+Hipodoge.ataques.push(
+    { nombre: '💧', id: 'boton-agua'},{nombre:'💧', id:'boton-agua'},{nombre:'💧', id:'boton-agua'},{nombre:'🌱', id:'boton-tierra'},{nombre:'🔥', id:'boton-fuego'}
+
+)
+Capipepo.ataques.push(
+    { nombre: '🌱', id: 'boton-tierra'},{nombre:'🌱', id:'boton-tierra'},{nombre:'🌱', id:'boton-tierra'},{nombre:'🔥', id:'boton-fuego'},{nombre:'💧', id:'boton-agua'}
+
+)
+Ratatopo.ataques.push(
+    { nombre: '🔥', id: 'boton-agua'},{nombre:'🔥', id:'boton-fuego'},{nombre:'🔥', id:'boton-fuego'},{nombre:'💧', id:'boton-agua'},{nombre:'🌱', id:'boton-tierra'}
+
+)
+
+mokepones.push(Hipodoge,Capipepo,Ratatopo)
 
 //El código comienza definiendo varias variables globales, incluidas las variables para almacenar el valor de los ataques de jugador y enemigo, el resultado del combate y el número de vidas para cada jugador.
 function iniciarJuego(){
 
 OcualtarIncio.style.display='none'
 
+mokepones.forEach((mokepon) => {
+    opcionesDeMokepones = `<input type="radio" name="mascota" id= ${mokepon.nombre}   />
+    <label class="clases-botones" for=${mokepon.nombre}>
+        <p>${mokepon.nombre}</p>
+        <img src=${mokepon.foto} alt=${mokepon.nombre}>
+    </label>
+    `
+    contenedorTarjetas.innerHTML += opcionesDeMokepones
+
+    inputHipodoge=document.getElementById('Hipodoge')
+    inputCapipepo=document.getElementById('capipepo')
+    inputRatatopo=document.getElementById('Ratatopo')
+
+})
 
 OcualtarReiniciar.style.display='none'
 
@@ -71,11 +105,11 @@ function seleccionarMascotaJugador(){
     OcualtarIncio.style.display='flex'
 
 if(inputHipodoge.checked){
-    spanMascotaJugador.innerHTML='Hipodoge'}
+    spanMascotaJugador.innerHTML= inputHipodoge.checked}
     else if(inputCapipepo.checked){
-    spanMascotaJugador.innerHTML='Capipepo'}
+    spanMascotaJugador.innerHTML=inputCapipepo.id}
     else if(inputRatatopo.checked){
-    spanMascotaJugador.innerHTML='Ratatopo'}
+    spanMascotaJugador.innerHTML=inputRatatopo.id}
     else{alert('Selecciona una mascota')}
 seleccionarMascotaEnemigo()
 }
