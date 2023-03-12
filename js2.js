@@ -32,10 +32,10 @@ let VidasJugagor = 3
 let VidasEnemigo = 3
 
 class Mokepon{
-    constructor(nombre, foto, vida){
+    constructor(nombre, foto, vidas){
         this.nombre = nombre
         this.foto= foto
-        this.vida=vida
+        this.vidas=vidas
         this.ataques = []
     }
 }
@@ -105,7 +105,7 @@ function seleccionarMascotaJugador(){
     OcualtarIncio.style.display='flex'
 
 if(inputHipodoge.checked){
-    spanMascotaJugador.innerHTML= inputHipodoge.checked}
+    spanMascotaJugador.innerHTML= inputHipodoge.id}
     else if(inputCapipepo.checked){
     spanMascotaJugador.innerHTML=inputCapipepo.id}
     else if(inputRatatopo.checked){
