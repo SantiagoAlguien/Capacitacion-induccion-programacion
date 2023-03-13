@@ -1,9 +1,6 @@
 const OcualtarIncio=document.getElementById('seleccionar-ataque')
 const OcualtarReiniciar=document.getElementById('reiniciar')
-const botonFuego=document.getElementById('boton-fuego')
 const botonMascotaJugador=document.getElementById('boton-mascota')
-const botonAgua=document.getElementById('boton-agua')
-const botonTierra=document.getElementById('boton-tierra')
 const botonReiniciar=document.getElementById('boton-reiniciar')
 
 const spanMascotaJugador=document.getElementById('mascota-jugador')
@@ -18,6 +15,7 @@ const Ocualtarresultado=document.getElementById('resultado')
 //El código comienza definiendo varias variables globales, incluidas las variables para almacenar el valor de los ataques de jugador y enemigo, el resultado del combate y el número de vidas para cada jugador.
 
 const contenedorTarjetas = document.getElementById('contenedorTarjetas')
+const contenedorAtaques= document.getElementById('ContenedorAtques')
 
 //Valores Globabales que las funciones dan el resultado
 let mokepones=[]
@@ -28,10 +26,15 @@ let opcionesDeMokepones
 let inputHipodoge
 let inputCapipepo
 let inputRatatopo
+let mascotaJugador
+let ataquesMokepon
+let botonAgua
+let botonTierra
+let botonFuego 
 let VidasJugagor = 3
 let VidasEnemigo = 3
 
-class Mokepon{
+class Mokepos{
     constructor(nombre, foto, vidas){
         this.nombre = nombre
         this.foto= foto
@@ -40,11 +43,11 @@ class Mokepon{
     }
 }
 
-let Hipodoge= new Mokepon('Hipodoge','./assets/mokepons_mokepon_hipodoge_attack.png',5)
+let Hipodoge= new Mokepos('Hipodoge','./assets/mokepons_mokepon_hipodoge_attack.png',5)
 
-let Capipepo= new Mokepon('capipepo','./assets/mokepons_mokepon_capipepo_attack.png',5)
+let Capipepo= new Mokepos('Capipepo','./assets/mokepons_mokepon_capipepo_attack.png',5)
 
-let Ratatopo= new Mokepon('Ratatopo','./assets/mokepons_mokepon_Ratatopo_attack.png',5)
+let Ratatopo= new Mokepos('Ratatopo','./assets/mokepons_mokepon_Ratatopo_attack.png',5)
 
 Hipodoge.ataques.push(
     { nombre: '💧', id: 'boton-agua'},{nombre:'💧', id:'boton-agua'},{nombre:'💧', id:'boton-agua'},{nombre:'🌱', id:'boton-tierra'},{nombre:'🔥', id:'boton-fuego'}
@@ -76,7 +79,7 @@ mokepones.forEach((mokepon) => {
     contenedorTarjetas.innerHTML += opcionesDeMokepones
 
     inputHipodoge=document.getElementById('Hipodoge')
-    inputCapipepo=document.getElementById('capipepo')
+    inputCapipepo=document.getElementById('Capipepo')
     inputRatatopo=document.getElementById('Ratatopo')
 
 })
@@ -87,45 +90,74 @@ OcualtarReiniciar.style.display='none'
 botonMascotaJugador.addEventListener('click',seleccionarMascotaJugador)
 
 
-botonFuego.addEventListener('click',ataqueFuego)
-
-
-botonAgua.addEventListener('click',ataqueAgua)
-
-
-botonTierra.addEventListener('click',ataqueTierra)
-
-
 botonReiniciar.addEventListener('click',reiniciarJuego )
 }
 
 //seleccionarMascotaJugador(): Esta función se llama cuando el jugador selecciona su mascota. Obtiene la mascota seleccionada por el jugador y muestra los botones de ataque.
 function seleccionarMascotaJugador(){
 
+    
     OcualtarIncio.style.display='flex'
+    
 
 if(inputHipodoge.checked){
-    spanMascotaJugador.innerHTML= inputHipodoge.id}
+    spanMascotaJugador.innerHTML= inputHipodoge.id
+    mascotaJugador= inputHipodoge.id
+}
     else if(inputCapipepo.checked){
-    spanMascotaJugador.innerHTML=inputCapipepo.id}
+    spanMascotaJugador.innerHTML=inputCapipepo.id
+    mascotaJugador= inputCapipepo.id
+}
     else if(inputRatatopo.checked){
-    spanMascotaJugador.innerHTML=inputRatatopo.id}
+    spanMascotaJugador.innerHTML=inputRatatopo.id
+    mascotaJugador= inputRatatopo.id
+}
     else{alert('Selecciona una mascota')}
+
+extraerAtaques(mascotaJugador)
 seleccionarMascotaEnemigo()
+}
+
+function extraerAtaques(){
+    let ataques
+    for (let i = 0; i< mokepones.length; i++) {
+        if (mascotaJugador === mokepones[i].nombre){
+            ataques = mokepones[i].ataques
+        }
+    }
+
+    mostrarAtaques(ataques)
+}
+
+function mostrarAtaques(ataques){
+    ataques.forEach((ataque) => {
+        ataquesMokepon = `
+        <button id=${ataque.id} class="Boton-de-ataque">${ataque.nombre}
+        </button>
+        `
+        contenedorAtaques.innerHTML += ataquesMokepon
+    })
+    
+    botonFuego=document.getElementById('boton-fuego')
+    botonAgua=document.getElementById('boton-agua')
+    botonTierra=document.getElementById('boton-tierra')
+    
+    botonFuego.addEventListener('click',ataqueFuego)
+
+
+    botonAgua.addEventListener('click',ataqueAgua)  
+
+
+    botonTierra.addEventListener('click',ataqueTierra)
 }
 
 //seleccionarMascotaEnemigo(): Esta función se llama después de que el seleccione su mascota y elige una mascota aleatoria para el enemigo. Muestra el nombre de la mascota enemiga en la pantalla.
 function seleccionarMascotaEnemigo(){
-let mascotaAleatoria=aleatorio(1,3)
+let mascotaAleatoria=aleatorio(0, mokepones.length -1)
 
 seleccionarMascota.style.display='none'
 
-
-if(mascotaAleatoria==1){
-spanMascotaEnemigo.innerHTML='Hipodoge'}
-else if(mascotaAleatoria==2){
-spanMascotaEnemigo.innerHTML='Capipepo'}
-else{spanMascotaEnemigo.innerHTML='Ratatopo'}
+    spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatoria].nombre
 }
 
 //ataqueFuego(), ataqueAgua(), ataqueTierra(): Estas funciones se llaman cuando el jugador selecciona uno de los botones de ataque. Configuran el ataque del jugador y llaman a ataqueAleatorioEnemigo().
