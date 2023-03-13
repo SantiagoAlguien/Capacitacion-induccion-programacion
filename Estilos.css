@@ -78,7 +78,7 @@ input:checked+ label{
   background-color: aquamarine;
 }
 /* sirver para que al momento de presionar un boton este salga de un color por un momento */
-button:active{
+/* button:active{
   background-color: brown;
 }
 

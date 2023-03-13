@@ -19,7 +19,7 @@ const contenedorAtaques= document.getElementById('ContenedorAtques')
 
 //Valores Globabales que las funciones dan el resultado
 let mokepones=[]
-let ataqueJugador
+let ataqueJugador=[]
 let ataqueEnemigo
 let resultado
 let opcionesDeMokepones 
@@ -31,6 +31,7 @@ let ataquesMokepon
 let botonAgua
 let botonTierra
 let botonFuego 
+let botones=[]
 let VidasJugagor = 3
 let VidasEnemigo = 3
 
@@ -132,7 +133,7 @@ function extraerAtaques(){
 function mostrarAtaques(ataques){
     ataques.forEach((ataque) => {
         ataquesMokepon = `
-        <button id=${ataque.id} class="Boton-de-ataque">${ataque.nombre}
+        <button id=${ataque.id} class="Boton-de-ataque BATataque">${ataque.nombre}
         </button>
         `
         contenedorAtaques.innerHTML += ataquesMokepon
@@ -141,32 +142,42 @@ function mostrarAtaques(ataques){
     botonFuego=document.getElementById('boton-fuego')
     botonAgua=document.getElementById('boton-agua')
     botonTierra=document.getElementById('boton-tierra')
-    
-    botonFuego.addEventListener('click',ataqueFuego)
+    botones = document.querySelectorAll('.BATataque')
 
+}
 
-    botonAgua.addEventListener('click',ataqueAgua)  
-
-
-    botonTierra.addEventListener('click',ataqueTierra)
+function secuenciaAteque(){
+    botones.forEach((boton)=>{
+        boton.addEventListener('click', (e)=>{
+            if (e.target.textContent === '🔥'){
+                ataqueJugador.push('FUEGO')
+                console.log(ataqueJugador)
+                boton.style.background='#112F58'
+            }else if(e.target.textContent === '💧'){
+                ataqueJugador.push('AGUA')
+                console.log(ataqueJugador)
+                boton.style.background='#112F58'
+            }else{
+                ataqueJugador.push('TIERRA')
+                console.log(ataqueJugador)
+                boton.style.background='#112F58'
+            }
+        })
+    })
 }
 
 //seleccionarMascotaEnemigo(): Esta función se llama después de que el seleccione su mascota y elige una mascota aleatoria para el enemigo. Muestra el nombre de la mascota enemiga en la pantalla.
 function seleccionarMascotaEnemigo(){
 let mascotaAleatoria=aleatorio(0, mokepones.length -1)
-
+secuenciaAteque()
 seleccionarMascota.style.display='none'
 
     spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatoria].nombre
+
 }
 
 //ataqueFuego(), ataqueAgua(), ataqueTierra(): Estas funciones se llaman cuando el jugador selecciona uno de los botones de ataque. Configuran el ataque del jugador y llaman a ataqueAleatorioEnemigo().
-function ataqueFuego(){ataqueJugador='FUEGO'
-ataqueAleatorioEnemigo()}
-function ataqueAgua(){ataqueJugador='AGUA'
-ataqueAleatorioEnemigo()}
-function ataqueTierra(){ataqueJugador='TIERRA'
-ataqueAleatorioEnemigo()}
+
 
 //ataqueAleatorioEnemigo(): Esta función elige un ataque aleatorio para el enemigo y llama a combate().
 function ataqueAleatorioEnemigo(){let ataqueAleatorio=aleatorio(1,3)
