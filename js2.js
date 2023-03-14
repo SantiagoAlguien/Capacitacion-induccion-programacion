@@ -20,13 +20,14 @@ const contenedorAtaques= document.getElementById('ContenedorAtques')
 //Valores Globabales que las funciones dan el resultado
 let mokepones=[]
 let ataqueJugador=[]
-let ataqueEnemigo
+let ataqueEnemigo=[]
 let resultado
 let opcionesDeMokepones 
 let inputHipodoge
 let inputCapipepo
 let inputRatatopo
 let mascotaJugador
+let ataquesMokeponEnemigo
 let ataquesMokepon
 let botonAgua
 let botonTierra
@@ -51,15 +52,27 @@ let Capipepo= new Mokepos('Capipepo','./assets/mokepons_mokepon_capipepo_attack.
 let Ratatopo= new Mokepos('Ratatopo','./assets/mokepons_mokepon_Ratatopo_attack.png',5)
 
 Hipodoge.ataques.push(
-    { nombre: '💧', id: 'boton-agua'},{nombre:'💧', id:'boton-agua'},{nombre:'💧', id:'boton-agua'},{nombre:'🌱', id:'boton-tierra'},{nombre:'🔥', id:'boton-fuego'}
+    { nombre:'💧', id:'boton-agua'},
+    {nombre:'💧', id:'boton-agua'},
+    {nombre:'💧', id:'boton-agua'},
+    {nombre:'🌱', id:'boton-tierra'},
+    {nombre:'🔥', id:'boton-fuego'}
 
 )
 Capipepo.ataques.push(
-    { nombre: '🌱', id: 'boton-tierra'},{nombre:'🌱', id:'boton-tierra'},{nombre:'🌱', id:'boton-tierra'},{nombre:'🔥', id:'boton-fuego'},{nombre:'💧', id:'boton-agua'}
+    { nombre: '🌱', id:'boton-tierra'},
+    {nombre:'🌱', id:'boton-tierra'},
+    {nombre:'🌱', id:'boton-tierra'},
+    {nombre:'🔥', id:'boton-fuego'},
+    {nombre:'💧', id:'boton-agua'}
 
 )
 Ratatopo.ataques.push(
-    { nombre: '🔥', id: 'boton-agua'},{nombre:'🔥', id:'boton-fuego'},{nombre:'🔥', id:'boton-fuego'},{nombre:'💧', id:'boton-agua'},{nombre:'🌱', id:'boton-tierra'}
+    { nombre:'🔥', id:'boton-fuego'},
+    {nombre:'🔥', id:'boton-fuego'},
+    {nombre:'🔥', id:'boton-fuego'},
+    {nombre:'💧', id:'boton-agua'},
+    {nombre:'🌱', id:'boton-tierra'}
 
 )
 
@@ -149,11 +162,11 @@ function mostrarAtaques(ataques){
 function secuenciaAteque(){
     botones.forEach((boton)=>{
         boton.addEventListener('click', (e)=>{
-            if (e.target.textContent === '🔥'){
+            if(e.target.textContent.trim() === '🔥'){
                 ataqueJugador.push('FUEGO')
                 console.log(ataqueJugador)
                 boton.style.background='#112F58'
-            }else if(e.target.textContent === '💧'){
+            }else if(e.target.textContent.trim() === '💧'){
                 ataqueJugador.push('AGUA')
                 console.log(ataqueJugador)
                 boton.style.background='#112F58'
@@ -162,38 +175,56 @@ function secuenciaAteque(){
                 console.log(ataqueJugador)
                 boton.style.background='#112F58'
             }
+            ataqueAleatorioEnemigo()
         })
     })
+
 }
 
 //seleccionarMascotaEnemigo(): Esta función se llama después de que el seleccione su mascota y elige una mascota aleatoria para el enemigo. Muestra el nombre de la mascota enemiga en la pantalla.
 function seleccionarMascotaEnemigo(){
-let mascotaAleatoria=aleatorio(0, mokepones.length -1)
-secuenciaAteque()
-seleccionarMascota.style.display='none'
+    let mascotaAleatoria=aleatorio(0, mokepones.length -1)
 
     spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatoria].nombre
-
+    ataquesMokeponEnemigo = mokepones[mascotaAleatoria].ataques
+    secuenciaAteque()
+    
+    seleccionarMascota.style.display='none'
 }
 
 //ataqueFuego(), ataqueAgua(), ataqueTierra(): Estas funciones se llaman cuando el jugador selecciona uno de los botones de ataque. Configuran el ataque del jugador y llaman a ataqueAleatorioEnemigo().
 
 
 //ataqueAleatorioEnemigo(): Esta función elige un ataque aleatorio para el enemigo y llama a combate().
-function ataqueAleatorioEnemigo(){let ataqueAleatorio=aleatorio(1,3)
-if(ataqueAleatorio==1){
-ataqueEnemigo='FUEGO'}
-else if(ataqueAleatorio==2){
-ataqueEnemigo='AGUA'}
-else{ataqueEnemigo='TIERRA'}
-combate()
+function ataqueAleatorioEnemigo(){
+    let ataqueAleatorio=aleatorio(0,ataqueAleatorioEnemigo.length -1)
+    
+    if(ataqueAleatorio == 0 || ataqueAleatorio == 1){
+        ataqueEnemigo.push('FUEGO')}
+    else if(ataqueAleatorio == 3 || ataqueAleatorio == 4){
+        ataqueEnemigo.push('AGUA')}
+    else{
+        ataqueEnemigo.push('TIERRA')
+    }
+    console.log(ataqueDelEnemigo)
+    iniciarPelea()
 }
 
+function iniciarPelea(){
+    if(ataqueJugador.length === 5 ){
+        combate()
+    }
+}
 
 //enfrentamiendo 
 //combate(): Esta función determina el resultado del combate y llama a crearMensaje()para mostrar el resultado en la pantalla. También llama revsisarVidas()para actualizar las vidas restantes del jugador y del enemigo.
-function combate() 
-{if(ataqueJugador == ataqueEnemigo){resultado='EMPATE'} 
+function combate() {
+
+    for (let index = 0; index < ataqueJugador.length; index++) {
+        console.log(ataqueJugador[index])
+    }
+
+    if(ataqueJugador == ataqueEnemigo){resultado='EMPATE'} 
 else if((ataqueJugador == 'AGUA' && ataqueEnemigo == 'TIERRA') || (ataqueJugador == 'FUEGO' && ataqueEnemigo == 'AGUA') || (ataqueJugador == 'TIERRA' && ataqueEnemigo == 'FUEGO')){resultado=('GANASTE')
 VidasEnemigo--
 } 
