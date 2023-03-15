@@ -33,6 +33,8 @@ let botonAgua
 let botonTierra
 let botonFuego 
 let botones=[]
+let indexAtaqueJugador
+let indexAtaqueEnemigo
 let VidasJugagor = 3
 let VidasEnemigo = 3
 
@@ -181,7 +183,7 @@ function secuenciaAteque(){
 
 }
 
-//seleccionarMascotaEnemigo(): Esta función se llama después de que el seleccione su mascota y elige una mascota aleatoria para el enemigo. Muestra el nombre de la mascota enemiga en la pantalla.
+//seleccionarMascotaEnemigo(): Esta función se llama después de que el seleccione su mascota y elige una mascota aleatoria para el enemigo. Muestra el nombre de la mascota enemigo en la pantalla.
 function seleccionarMascotaEnemigo(){
     let mascotaAleatoria=aleatorio(0, mokepones.length -1)
 
@@ -197,8 +199,8 @@ function seleccionarMascotaEnemigo(){
 
 //ataqueAleatorioEnemigo(): Esta función elige un ataque aleatorio para el enemigo y llama a combate().
 function ataqueAleatorioEnemigo(){
-    let ataqueAleatorio=aleatorio(0,ataqueAleatorioEnemigo.length -1)
-    
+    let ataqueAleatorio=aleatorio(0,ataquesMokeponEnemigo.length -1)
+    console.log(ataqueAleatorio)
     if(ataqueAleatorio == 0 || ataqueAleatorio == 1){
         ataqueEnemigo.push('FUEGO')}
     else if(ataqueAleatorio == 3 || ataqueAleatorio == 4){
@@ -206,7 +208,7 @@ function ataqueAleatorioEnemigo(){
     else{
         ataqueEnemigo.push('TIERRA')
     }
-    console.log(ataqueDelEnemigo)
+    console.log(ataqueEnemigo)
     iniciarPelea()
 }
 
@@ -216,22 +218,26 @@ function iniciarPelea(){
     }
 }
 
+function indexAmbosOponentes(jugador, enemigo) {
+    indexAtaqueJugador = ataqueEnemigo[jugador]
+    indexAtaqueEnemigo = ataqueEnemigo[enemigo]
+}
+
 //enfrentamiendo 
 //combate(): Esta función determina el resultado del combate y llama a crearMensaje()para mostrar el resultado en la pantalla. También llama revsisarVidas()para actualizar las vidas restantes del jugador y del enemigo.
 function combate() {
 
     for (let index = 0; index < ataqueJugador.length; index++) {
-        console.log(ataqueJugador[index])
-    }
-
-    if(ataqueJugador == ataqueEnemigo){resultado='EMPATE'} 
-else if((ataqueJugador == 'AGUA' && ataqueEnemigo == 'TIERRA') || (ataqueJugador == 'FUEGO' && ataqueEnemigo == 'AGUA') || (ataqueJugador == 'TIERRA' && ataqueEnemigo == 'FUEGO')){resultado=('GANASTE')
-VidasEnemigo--
-} 
-else {resultado =('PERDISTE')
-VidasJugagor--
-}
-crearMensaje()
+        if(ataqueJugador[index] === ataqueEnemigo[index]){
+            indexAmbosOponentes(index, index)
+            crearMensaje("EMPATE")
+        }else if((ataqueJugador[index] === 'AGUA' && ataqueEnemigo[index] === 'TIERRA') || (ataqueJugador[index] === 'FUEGO' && ataqueEnemigo[index] === 'AGUA') || (ataqueJugador[index] === 'TIERRA' && ataqueEnemigo[index] === 'FUEGO')){
+            indexAmbosOponentes(index, index)
+            crearMensaje("GANASTE")
+            VidasEnemigo--
+        } else {crearMensaje("PERDISTE")
+            VidasJugagor--
+        }}
 revsisarVidas()
 }
 
@@ -254,15 +260,15 @@ function revsisarVidas(){
 }
 
 //crearMensaje(): Esta función crea un mensaje para mostrar el resultado del combate en la pantalla.
-function crearMensaje(){
+function crearMensaje(resultado){
 
 
 let nuevoataqueDelJugador=document.createElement('p')
 let nuevoataqueDelEnemigo=document.createElement('p')
 
 sectionMensajes.innerHTML= resultado
-ataqueDelJugador.innerHTML= ataqueJugador
-ataqueDelEnemigo.innerHTML= ataqueEnemigo
+ataqueDelJugador.innerHTML= indexAtaqueJugador
+ataqueDelEnemigo.innerHTML= indexAtaqueEnemigo
 
 ataqueDelJugador.appendChild(nuevoataqueDelJugador)
 ataqueDelEnemigo.appendChild(nuevoataqueDelEnemigo)
