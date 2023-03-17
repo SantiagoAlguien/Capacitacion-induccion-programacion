@@ -1,11 +1,11 @@
-const seccionSeleccionarAtaque=document.getElementById('seleccionar-ataque')
-const seccionReiniciar=document.getElementById('reiniciar')
+const sectionSeleccionarAtaque=document.getElementById('seleccionar-ataque')
+const sectionReiniciar=document.getElementById('reiniciar')
 const botonMascotaJugador=document.getElementById('boton-mascota')
 const botonReiniciar=document.getElementById('boton-reiniciar')
-seccionReiniciar.style.display='none'
+sectionReiniciar.style.display='none'
 
 
-const seleccionarSeleccionarMascota=document.getElementById('seleccionar-mascota')
+const sectionSeleccionarMascota =document.getElementById('seleccionar-mascota')
 const spanMascotaJugador=document.getElementById('mascota-jugador')
 
 const spanMascotaEnemigo=document.getElementById('mascota-enemigo')
@@ -14,10 +14,10 @@ const spanVidasJugador = document.getElementById('vidas-jugador')
 const spanVidasEnemigo = document.getElementById('vidas-enemigo')
 
 const sectionMensajes=document.getElementById('resultado')
-const ataqueDelJugador=document.getElementById('ataque-del-jugador')
-const ataqueDelEnemigo=document.getElementById('ataque-del-enemigo')
-const contenedorTarjetas = document.getElementById('contenedorTarjetas')
-const contenedorAtaques= document.getElementById('ContenedorAtques')
+const ataquesDelJugador=document.getElementById('ataque-del-jugador')
+const ataquesDelEnemigo=document.getElementById('ataque-del-enemigo')
+const contenedorTarjetas= document.getElementById('contenedorTarjetas')
+const contenedorAtaques= document.getElementById('contenedorAtaques')
 
 //Valores Globabales que las funciones dan el resultado
 let mokepones = []
@@ -26,7 +26,7 @@ let ataqueEnemigo = []
 let opcionDeMokepones
 let inputHipodoge
 let inputCapipepo
-let inputRatigueya
+let inputRatatopo
 let mascotaJugador
 let ataquesMokepon
 let ataquesMokeponEnemigo
@@ -36,61 +36,55 @@ let botonTierra
 let botones = []
 let indexAtaqueJugador
 let indexAtaqueEnemigo
-let victoriasJugador = 0
-let victoriasEnemigo = 0 
 let vidasJugador = 3
 let vidasEnemigo = 3
 
-class Mokepos{
-    constructor(nombre, foto, vidas){
+class Mokepon {
+    constructor(nombre, foto, vida){
         this.nombre = nombre
         this.foto= foto
-        this.vidas=vidas
+        this.vida=vida
         this.ataques = []
     }
 }
 
-let Hipodoge= new Mokepos('Hipodoge','./assets/mokepons_mokepon_hipodoge_attack.png',5)
+let Hipodoge= new Mokepon('Hipodoge','./assets/mokepons_mokepon_hipodoge_attack.png',5)
 
-let Capipepo= new Mokepos('Capipepo','./assets/mokepons_mokepon_capipepo_attack.png',5)
+let Capipepo= new Mokepon('Capipepo','./assets/mokepons_mokepon_capipepo_attack.png',5)
 
-let Ratatopo= new Mokepos('Ratatopo','./assets/mokepons_mokepon_Ratatopo_attack.png',5)
+let Ratatopo= new Mokepon('Ratatopo','./assets/mokepons_mokepon_Ratatopo_attack.png',5)
 
 Hipodoge.ataques.push(
-    { nombre:'💧', id:'boton-agua'},
+    {nombre:'💧', id:'boton-agua'},
     {nombre:'💧', id:'boton-agua'},
     {nombre:'💧', id:'boton-agua'},
     {nombre:'🌱', id:'boton-tierra'},
     {nombre:'🔥', id:'boton-fuego'},
-
 )
 Capipepo.ataques.push(
-    { nombre: '🌱', id:'boton-tierra'},
+    {nombre:'🌱', id:'boton-tierra'},
     {nombre:'🌱', id:'boton-tierra'},
     {nombre:'🌱', id:'boton-tierra'},
     {nombre:'🔥', id:'boton-fuego'},
     {nombre:'💧', id:'boton-agua'},
-
 )
 Ratatopo.ataques.push(
-    { nombre:'🔥', id:'boton-fuego'},
+    {nombre:'🔥', id:'boton-fuego'},
     {nombre:'🔥', id:'boton-fuego'},
     {nombre:'🔥', id:'boton-fuego'},
     {nombre:'💧', id:'boton-agua'},
     {nombre:'🌱', id:'boton-tierra'},
-
 )
 
 mokepones.push(Hipodoge,Capipepo,Ratatopo)
 
 //El código comienza definiendo varias variables globales, incluidas las variables para almacenar el valor de los ataques de jugador y enemigo, el resultado del combate y el número de vidas para cada jugador.
 function iniciarJuego(){
-
-seccionSeleccionarAtaque.style.display='none'
+ sectionSeleccionarAtaque.style.display='none'
 
 mokepones.forEach((mokepon) => {
-    opcionesDeMokepones = `<input type="radio" name="mascota" id= ${mokepon.nombre}   />
-    <label class="clases-botones" for=${mokepon.nombre}>
+    opcionDeMokepones = `<input type="radio" name="mascota" id= ${mokepon.nombre}   />
+    <label class="clases-botones1" for=${mokepon.nombre}>
         <p>${mokepon.nombre}</p>
         <img src=${mokepon.foto} alt=${mokepon.nombre}>
     </label>
@@ -112,25 +106,24 @@ mokepones.forEach((mokepon) => {
 //seleccionarMascotaJugador(): Esta función se llama cuando el jugador selecciona su mascota. Obtiene la mascota seleccionada por el jugador y muestra los botones de ataque.
 function seleccionarMascotaJugador(){
 
-    seleccionarSeleccionarMascota.style.display='none'
+    sectionSeleccionarMascota.style.display='none'
 
 
-    seccionSeleccionarAtaque.style.display='flex'
+    sectionSeleccionarAtaque.style.display='flex'
     
 
-if(inputHipodoge.checked){
-    spanMascotaJugador.innerHTML= inputHipodoge.id
-    mascotaJugador= inputHipodoge.id
+    if(inputHipodoge.checked){
+        spanMascotaJugador.innerHTML= inputHipodoge.id
+        mascotaJugador= inputHipodoge.id
+    } else if(inputCapipepo.checked){
+        spanMascotaJugador.innerHTML=inputCapipepo.id
+        mascotaJugador= inputCapipepo.id
+    } else if(inputRatatopo.checked){
+        spanMascotaJugador.innerHTML=inputRatatopo.id
+        mascotaJugador= inputRatatopo.id
+    } else{
+        alert('Selecciona una mascota')
 }
-    else if(inputCapipepo.checked){
-    spanMascotaJugador.innerHTML=inputCapipepo.id
-    mascotaJugador= inputCapipepo.id
-}
-    else if(inputRatatopo.checked){
-    spanMascotaJugador.innerHTML=inputRatatopo.id
-    mascotaJugador= inputRatatopo.id
-}
-    else{alert('Selecciona una mascota')}
 
     extraerAtaques(mascotaJugador)
     seleccionarMascotaEnemigo()
@@ -142,8 +135,8 @@ function extraerAtaques(mascotaJugador){
         if (mascotaJugador === mokepones[i].nombre){
             ataques = mokepones[i].ataques
         }
+        
     }
-
     mostrarAtaques(ataques)
 }
 
@@ -230,14 +223,6 @@ function combate() {
         if(ataqueJugador[index] === ataqueEnemigo[index]){
             indexAmbosOponentes(index, index)
             crearMensaje("EMPATE")
-        }else if((ataqueJugador[index] === 'AGUA' && ataqueEnemigo[index] === 'TIERRA') || (ataqueJugador[index] === 'FUEGO' && ataqueEnemigo[index] === 'AGUA') || (ataqueJugador[index] === 'TIERRA' && ataqueEnemigo[index] === 'FUEGO')){
-            indexAmbosOponentes(index, index)
-            crearMensaje("GANASTE")
-            victoriasJugador++
-            spanVidasJugador.innerHTML = victoriasJugador
-        } else {crearMensaje("PERDISTE")
-            victoriasEnemigo++
-            spanMascotaEnemigo.innerHTML = victoriasEnemigo
         }
     }
 
@@ -245,12 +230,10 @@ function combate() {
 }
 
 //revsisarVidas(): Esta función verifica si uno de los combatientes ha perdido todas sus vidas y termina el juego si es así. Actualiza las vidas restantes del jugador y del enemigo en la pantalla.
-function revsisarVidas(){
-    if(victoriasJugador === victoriasEnemigo){
-        crearMensajeFinal("Esto es un empate:|")
-    }else if (victoriasJugador > victoriasEnemigo ){
-        crearMensajeFinal("Felicitaciones Ganaste :)")
-    }else{
+function revisarVidas() {
+    if (vidasEnemigo == 0) {
+        crearMensajeFinal("FELICITACIONES! Ganaste :)")
+    } else if (vidasJugador == 0) {
         crearMensajeFinal('Lo siento, perdiste :(')
     }
 }
@@ -266,8 +249,8 @@ function crearMensaje(resultado){
     nuevoataqueDelJugador.innerHTML= indexAtaqueJugador
     nuevoataqueDelEnemigo.innerHTML= indexAtaqueEnemigo
 
-    ataqueDelJugador.appendChild(nuevoataqueDelJugador)
-    ataqueDelEnemigo.appendChild(nuevoataqueDelEnemigo)
+    ataquesDelJugador.appendChild(nuevoataqueDelJugador)
+    ataquesDelEnemigo.appendChild(nuevoataqueDelEnemigo)
 }
 
 //crearMensajeFinal(): Esta función crea un mensaje final para mostrar el resultado del juego en la pantalla.
@@ -285,7 +268,7 @@ sectionMensajes.innerHTML= resultadoFinal
     botonTierra.disabled = true
 
     
-    seccionReiniciar.style.display='block'
+    sectionReiniciar.style.display='block'
 }
 
 //Esta funcion lo que hace es volver al inicio del juego
