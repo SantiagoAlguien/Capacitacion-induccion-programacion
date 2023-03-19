@@ -28,12 +28,15 @@ let opcionDeMokepones
 let inputHipodoge
 let inputCapipepo
 let inputRatatopo
+let inputTucanpaloma
+let inputpydas
 let mascotaJugador
 let ataquesMokepon
 let ataquesMokeponEnenmigo
 let botonFuego
 let botonAgua
 let botonTierra
+let botonViento
 let botones =[]
 let indexAtaqueJugador
 let indexAtaqueEnemigo
@@ -50,15 +53,16 @@ class Mokepon{
         this.ataques =[]
     }
 }
-let hipodoge=new Mokepon('Hipodoge','./assets/mokepons_mokepon_hipodoge_attack.png',5)
-let capipepo=new Mokepon('Capipepo','./assets/mokepons_mokepon_capipepo_attack.png',5)
-let ratatopo=new Mokepon('Ratatopo','./assets/mokepons_mokepon_Ratatopo_attack.png',5)
-
+let hipodoge=new Mokepon('Hipodoge','./assets/mokepons_mokepon_hipodoge_attack.png',6)
+let capipepo=new Mokepon('Capipepo','./assets/mokepons_mokepon_capipepo_attack.png',6)
+let ratatopo=new Mokepon('Ratatopo','./assets/mokepons_mokepon_Ratatopo_attack.png',6)
+let tucanpaloma=new Mokepon('Tucapalom','./assets/mokepons_mokepon_tucapalma_attack.png',6)
+let pydas=new Mokepon('Pydas','./assets/mokepons_mokepon_pydos_attack.png',6)
 hipodoge.ataques.push(
     {nombre:'💧',id:'boton-agua'},
     {nombre:'💧',id:'boton-agua'},
     {nombre:'💧',id:'boton-agua'},
-    {nombre:'🔥',id:'boton-fuego'},
+    {nombre:'💨',id:'boton-viento'},
     {nombre:'🌱',id:'boton-tierra'},
 )
 
@@ -66,8 +70,8 @@ capipepo.ataques.push(
     {nombre:'🌱',id:'boton-tierra'},
     {nombre:'🌱',id:'boton-tierra'},
     {nombre:'🌱',id:'boton-tierra'},
+    {nombre:'💨',id:'boton-viento'},
     {nombre:'💧',id:'boton-agua'},
-    {nombre:'🔥',id:'boton-fuego'},
 )
 
 ratatopo.ataques.push(
@@ -78,7 +82,23 @@ ratatopo.ataques.push(
     {nombre:'💧',id:'boton-agua'},
 )
 
-mokepones.push(hipodoge,capipepo,ratatopo)
+tucanpaloma.ataques.push(
+    {nombre:'💨',id:'boton-viento'},
+    {nombre:'💨',id:'boton-viento'},
+    {nombre:'💨',id:'boton-viento'},
+    {nombre:'🔥',id:'boton-fuego'},
+    {nombre:'🌱',id:'boton-tierra'},
+)
+
+pydas.ataques.push(
+    {nombre:'💧',id:'boton-agua'},
+    {nombre:'💨',id:'boton-viento'},
+    {nombre:'🌱',id:'boton-tierra'},
+    {nombre:'🔥',id:'boton-fuego'},
+    {nombre:'🌱',id:'boton-tierra'},
+)
+
+mokepones.push(hipodoge,capipepo,ratatopo,tucanpaloma,pydas)
 
 function iniciarJuego(){
     sectionSeleccionarAtaque.style.display = 'none'
@@ -97,6 +117,8 @@ function iniciarJuego(){
          inputHipodoge=document.getElementById('Hipodoge')
          inputCapipepo=document.getElementById('Capipepo')
          inputRatatopo=document.getElementById('Ratatopo')
+         inputTucanpaloma=document.getElementById('Tucapalom')
+         inputpydas=document.getElementById('Pydas')
     })
     sectionReiniciar.style.display = 'none'
     botonMascotaJugador.addEventListener('click',seleccionarMascotaJugador)
@@ -119,6 +141,12 @@ function seleccionarMascotaJugador(){
         }else if(inputRatatopo.checked){
             spanMascotaJugador.innerHTML=inputRatatopo.id
             mascotaJugador = inputRatatopo.id
+        }else if(inputTucanpaloma.checked){
+            spanMascotaJugador.innerHTML=inputTucanpaloma.id
+            mascotaJugador = inputTucanpaloma.id
+        }else if(inputpydas.checked){
+            spanMascotaJugador.innerHTML=inputpydas.id
+            mascotaJugador = inputpydas.id
         }else{
              alert('Seleciona una mascota')
         }
@@ -135,7 +163,6 @@ function extraerAtaques(mascotaJugador){
         }
         
     }
-
     mostrarAtaque(ataques)
 }
 
@@ -149,8 +176,8 @@ function mostrarAtaque(ataques){
     botonFuego=document.getElementById('boton-fuego')
     botonAgua=document.getElementById('boton-agua')
     botonTierra=document.getElementById('boton-tierra')
+    botonViento=document.getElementById('boton-viento')
     botones = document.querySelectorAll('.BAtaque')
-
 }
 
 function secuenciaAtaque(){
@@ -163,6 +190,11 @@ function secuenciaAtaque(){
                 boton.disabled = true
             }else if(e.target.textContent === '💧'){
                 ataqueJugador.push('AGUA')
+                console.log(ataqueJugador)
+                boton.style.background = '#112f58'
+                boton.disabled = true
+            }else if(e.target.textContent === '💨'){
+                ataqueJugador.push('VIENTO')
                 console.log(ataqueJugador)
                 boton.style.background = '#112f58'
                 boton.disabled = true
@@ -193,6 +225,8 @@ function ataqueAleatorioEnemigo(){
         ataqueEnemigo.push('FUEGO')
     }else if(ataqueAleatorio== 3 || ataqueAleatorio == 4){
         ataqueEnemigo.push('AGUA')
+    }else if(ataqueAleatorio== 6 || ataqueAleatorio == 7){
+        ataqueEnemigo.push('VIENTO')
     }else{
         ataqueEnemigo.push('TIERRA')
     }
@@ -218,7 +252,7 @@ function combate(){
         if(ataqueJugador[index] === ataqueEnemigo[index]) {
             indexAmbosOponentes(index, index)
             crearMensaje("EMPATE")
-        }else if((ataqueJugador[index] === 'FUEGO' && ataqueEnemigo[index] === 'TIERRA') || (ataqueJugador[index] === 'AGUA' && ataqueEnemigo[index] === 'FUEGO') || (ataqueJugador[index] === 'TIERRA' && ataqueEnemigo[index] === 'AGUA')){
+        }else if((ataqueJugador[index] === 'FUEGO' && ataqueEnemigo[index] === 'TIERRA') || (ataqueJugador[index] === 'AGUA' && ataqueEnemigo[index] === 'FUEGO') || (ataqueJugador[index] === 'TIERRA' && ataqueEnemigo[index] === 'AGUA') || (ataqueJugador[index] === 'VIENTO' && ataqueEnemigo[index] === 'TIERRA')){
             indexAmbosOponentes(index, index)
             crearMensaje("GANASTE")
             VictoriasJugador++
