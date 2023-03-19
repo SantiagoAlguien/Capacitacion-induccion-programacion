@@ -36,7 +36,7 @@ body{
 }
 
 /* Clase de seleccionar mascota de fondo */
-.clases-botones1{
+.clases-botones{
   width: 225px;
   height: 165px;
   background-color: #2c39a1;
@@ -51,7 +51,7 @@ body{
   align-items: center;
 }
 /* clase para poner el tamaño debido a las imagenes de los */
-.clases-botones1 img{
+.clases-botones img{
     width: 120px;
 }
 
@@ -78,7 +78,7 @@ input:checked+ label{
   background-color: aquamarine;
 }
 /* sirver para que al momento de presionar un boton este salga de un color por un momento */
-/* button:active{
+button:active{
   background-color: brown;
 }
 
@@ -104,11 +104,10 @@ input:checked+ label{
 
 /* Es la clase que van a tener los botones de atacar al enemigo */
 .Boton-de-ataque{
-    width: 150px;
+    width: 80px;
     background-color: #2c39a1;
     padding: 10px;
     border-radius: 15px;
-    margin-top: 25px;
     border-color: transparent;
     color: white;
     margin: 10px;
