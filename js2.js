@@ -1,22 +1,15 @@
 const sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
 const sectionReiniciar = document.getElementById('reiniciar')
 const botonMascotaJugador=document.getElementById('boton-mascota')
-
 const botonReiniciar=document.getElementById('boton-reiniciar')
-
 const sectionSeleccionarMascota=document.getElementById('seleccionar-mascota')
-
 const spanMascotaJugador=document.getElementById('mascota-jugador')
-
 const spanMascotaEnemigo=document.getElementById('mascota-enemigo')
-
 const spanVidasJugador = document.getElementById('vidas-jugador')
 const spanVidasEnemigo = document.getElementById('vidas-enemigo')
-
 const sectionMensajes=document.getElementById('resultado')
 const ataquesDelJugador=document.getElementById('ataques-del-jugador')
 const ataqueDelEnemigo=document.getElementById('ataques-del-enemigo')
-
 const contenedorTarjetas= document.getElementById('contenedorTarjetas')
 const contenedorAtaques = document.getElementById('contenedorAtaques')
 
@@ -55,26 +48,45 @@ let mapaBackground = new Image()
 mapaBackground.src = './assets/mokemap.png'
 
 class Mokepon{
-    constructor(nombre, foto, vida){
+    constructor(nombre, foto, vida, fotoMapa, x = 10 , y = 10, ){
         this.nombre=nombre
         this.foto=foto
         this.vida=vida
         this.ataques =[]
-        this.x = 20
-        this.y = 30
-        this.ancho = 80
-        this.alto = 80
+        this.x = x
+        this.y = y
+        this.ancho = 40
+        this.alto = 40
         this.mapaFoto = new Image()
-        this.mapaFoto.src = foto
+        this.mapaFoto.src = fotoMapa
         this.velocidadX = 0
         this.velocidadY = 0
     }
-}
-let hipodoge=new Mokepon('Hipodoge','./assets/mokepons_mokepon_hipodoge_attack.png',6)
-let capipepo=new Mokepon('Capipepo','./assets/mokepons_mokepon_capipepo_attack.png',6)
-let ratatopo=new Mokepon('Ratatopo','./assets/mokepons_mokepon_Ratatopo_attack.png',6)
-let tucanpaloma=new Mokepon('Tucapalom','./assets/mokepons_mokepon_tucapalma_attack.png',6)
-let pydas=new Mokepon('Pydas','./assets/mokepons_mokepon_pydos_attack.png',6)
+    pintarMokepon(){
+        lienzo.drawImage(
+            this.mapaFoto,
+            this.x,
+            this.y,
+            this.ancho,
+            this.alto,
+            )
+        }
+    
+    }
+
+
+let hipodoge=new Mokepon('Hipodoge','./assets/mokepons_mokepon_hipodoge_attack.png',5,'./assets/hipodoge.png')
+let capipepo=new Mokepon('Capipepo','./assets/mokepons_mokepon_capipepo_attack.png',5,'./assets/capipepo.png')
+let ratatopo=new Mokepon('Ratatopo','./assets/mokepons_mokepon_Ratatopo_attack.png',5,'./assets/ratigueya.png')
+let tucanpaloma=new Mokepon('Tucapalom','./assets/mokepons_mokepon_tucapalma_attack.png',5,'./assets/TucaPalom.png')
+let pydas=new Mokepon('Pydas','./assets/mokepons_mokepon_pydos_attack.png',5,'./assets/Pydas.png')
+
+let hipodogeEnemigo=new Mokepon('Hipodoge','./assets/mokepons_mokepon_hipodoge_attack.png',5,'./assets/hipodoge.png',80 , 120)
+let capipepoEnemigo=new Mokepon('Capipepo','./assets/mokepons_mokepon_capipepo_attack.png',5,'./assets/capipepo.png',90 ,150)
+let ratatopoEnemigo=new Mokepon('Ratatopo','./assets/mokepons_mokepon_Ratatopo_attack.png',5,'./assets/ratigueya.png',200 , 190) 
+let tucanpalomaEnemigo=new Mokepon('Tucapalom','./assets/mokepons_mokepon_tucapalma_attack.png',5,'./assets/TucaPalom.png', 50 ,40)
+let pydasEnemigo=new Mokepon('Pydas','./assets/mokepons_mokepon_pydos_attack.png',5,'./assets/Pydas.png',150 ,90)
+
 hipodoge.ataques.push(
     {nombre:'💧',id:'boton-agua'},
     {nombre:'💧',id:'boton-agua'},
@@ -336,13 +348,12 @@ function pintarCanvas(){
         mapa.width,
         mapa.height,
     )
-    lienzo.drawImage(
-        mascotaJugadorObjecto.mapaFoto,
-        mascotaJugadorObjecto.x,
-        mascotaJugadorObjecto.y,
-        mascotaJugadorObjecto.ancho,
-        mascotaJugadorObjecto.alto,
-        )
+    mascotaJugadorObjecto.pintarMokepon()
+    hipodogeEnemigo.pintarMokepon()
+    capipepoEnemigo.pintarMokepon()
+    ratatopoEnemigo.pintarMokepon()
+    tucanpalomaEnemigo.pintarMokepon()
+    pydasEnemigo.pintarMokepon()
 }
 
 function moverDerecha() {
@@ -386,8 +397,8 @@ function sePresionaUnaTecla(event){
 }
 
 function InciarMapa(){
-    mapa.width = 300
-    mapa.height = 240
+    mapa.width = 600
+    mapa.height = 400
     mascotaJugadorObjecto = obtenerObjectoMascota(mascotaJugador)
     intervalo = setInterval(pintarCanvas, 50)
 
