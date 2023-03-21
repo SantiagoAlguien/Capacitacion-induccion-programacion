@@ -46,6 +46,19 @@ let lienzo = mapa.getContext("2d")
 let intervalo
 let mapaBackground = new Image()
 mapaBackground.src = './assets/mokemap.png'
+let alturaQueBuscamos
+let anchoDelMapa = window.innerWidth -20
+const anchoMaximoDelMapa = 800
+
+if (anchoDelMapa > anchoMaximoDelMapa){
+    anchoDelMapa = anchoMaximoDelMapa -20
+}
+
+
+alturaQueBuscamos = anchoDelMapa * 600 / 800
+
+mapa.width = anchoDelMapa
+mapa.height = alturaQueBuscamos
 
 class Mokepon{
     constructor(nombre, foto, vida, fotoMapa, x = 10 , y = 10, ){
@@ -95,7 +108,22 @@ hipodoge.ataques.push(
     {nombre:'🌱',id:'boton-tierra'},
 )
 
+hipodogeEnemigo.ataques.push(
+    {nombre:'💧',id:'boton-agua'},
+    {nombre:'💧',id:'boton-agua'},
+    {nombre:'💧',id:'boton-agua'},
+    {nombre:'💨',id:'boton-viento'},
+    {nombre:'🌱',id:'boton-tierra'},
+)
+
 capipepo.ataques.push(
+    {nombre:'🌱',id:'boton-tierra'},
+    {nombre:'🌱',id:'boton-tierra'},
+    {nombre:'🌱',id:'boton-tierra'},
+    {nombre:'💨',id:'boton-viento'},
+    {nombre:'💧',id:'boton-agua'},
+)
+capipepoEnemigo.ataques.push(
     {nombre:'🌱',id:'boton-tierra'},
     {nombre:'🌱',id:'boton-tierra'},
     {nombre:'🌱',id:'boton-tierra'},
@@ -111,6 +139,14 @@ ratatopo.ataques.push(
     {nombre:'💧',id:'boton-agua'},
 )
 
+ratatopoEnemigo.ataques.push(
+    {nombre:'🔥',id:'boton-fuego'},
+    {nombre:'🔥',id:'boton-fuego'},
+    {nombre:'🔥',id:'boton-fuego'},
+    {nombre:'🌱',id:'boton-tierra'},
+    {nombre:'💧',id:'boton-agua'},
+)
+
 tucanpaloma.ataques.push(
     {nombre:'💨',id:'boton-viento'},
     {nombre:'💨',id:'boton-viento'},
@@ -119,7 +155,23 @@ tucanpaloma.ataques.push(
     {nombre:'🌱',id:'boton-tierra'},
 )
 
+tucanpalomaEnemigo.ataques.push(
+    {nombre:'💨',id:'boton-viento'},
+    {nombre:'💨',id:'boton-viento'},
+    {nombre:'💨',id:'boton-viento'},
+    {nombre:'🔥',id:'boton-fuego'},
+    {nombre:'🌱',id:'boton-tierra'},
+)
+
 pydas.ataques.push(
+    {nombre:'💧',id:'boton-agua'},
+    {nombre:'💨',id:'boton-viento'},
+    {nombre:'🌱',id:'boton-tierra'},
+    {nombre:'🔥',id:'boton-fuego'},
+    {nombre:'🌱',id:'boton-tierra'},
+)
+
+pydasEnemigo.ataques.push(
     {nombre:'💧',id:'boton-agua'},
     {nombre:'💨',id:'boton-viento'},
     {nombre:'🌱',id:'boton-tierra'},
@@ -160,7 +212,7 @@ function seleccionarMascotaJugador(){
     
     sectionSeleccionarMascota.style.display='none'
     
-    //sectionSeleccionarAtaque.style.display='flex'
+    
 
 
     if(inputHipodoge.checked){
@@ -184,7 +236,7 @@ function seleccionarMascotaJugador(){
     extraerAtaques(mascotaJugador)
     sectionVerMapa.style.display = 'flex'
     InciarMapa()
-    seleccionarMascotaEnemigo()
+
 
 }
 
@@ -243,11 +295,9 @@ function secuenciaAtaque(){
     
 }
 
-function seleccionarMascotaEnemigo(){
-    let mascotaAleatoria=aleatorio(0, mokepones.length -1)
-
-    spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatoria].nombre
-    ataquesMokeponEnenmigo = mokepones[mascotaAleatoria].ataques
+function seleccionarMascotaEnemigo(enemigo){
+    spanMascotaEnemigo.innerHTML =enemigo.nombre
+    ataquesMokeponEnenmigo = enemigo.ataques
     secuenciaAtaque()
 }
 
@@ -405,8 +455,7 @@ function sePresionaUnaTecla(event){
 }
 
 function InciarMapa(){
-    mapa.width = 600
-    mapa.height = 400
+
     mascotaJugadorObjecto = obtenerObjectoMascota(mascotaJugador)
     intervalo = setInterval(pintarCanvas, 50)
 
@@ -448,6 +497,10 @@ function revisarColicion(enemigo){
         return
     }
     detenerMovimiento()
-    alert("Si hay colision" + enemigo.nombre)
+    clearInterval(intervalo)
+    sectionSeleccionarAtaque.style.display='flex'
+    sectionVerMapa.style.display='none'
+    seleccionarMascotaEnemigo(enemigo)
+    //alert("Si hay colision" + enemigo.nombre)
 }
 window.addEventListener('load',iniciarJuego)
