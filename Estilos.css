@@ -24,6 +24,12 @@ body{
   margin: -30px;
 }
 
+.subtitulo2{
+  color: #ffffff;
+  padding: 10px;
+  margin-top: 40px;
+  margin-block-end: -5px;
+}
 /* es la clase que va a tener el fondo */
 .fondo {background-image: url(./assets/wallpaperbetter.jpg);}
 
@@ -161,7 +167,19 @@ button:active{
 }
 
 #mapa{
-  border: 2px solid wheat;
+  border-radius: 20px;
+}
+
+#ver-mapa button{
+  width: 82px;
+  height: 66px;
+  background-color: rgb(27, 0, 124);
+  box-sizing: border-box;
+  border: 4px solid;
+  color: #ffffff;
+  border-radius: 50px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 4px;
 }
 
 /* Esto lo que hace es adaptar los elementos de la pagina a una resolucion especifica */
@@ -172,6 +190,13 @@ button:active{
 }
 @media (max-width: 500px){
   .fondo{
+    flex-direction: column;
+  }
+}
+@media (max-width: 300px){
+  #ver-mapa div{
+    display: flex;
+    align-items: center;
     flex-direction: column;
   }
 }

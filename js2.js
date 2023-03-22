@@ -48,7 +48,7 @@ let mapaBackground = new Image()
 mapaBackground.src = './assets/mokemap.png'
 let alturaQueBuscamos
 let anchoDelMapa = window.innerWidth -20
-const anchoMaximoDelMapa = 800
+const anchoMaximoDelMapa = 550
 
 if (anchoDelMapa > anchoMaximoDelMapa){
     anchoDelMapa = anchoMaximoDelMapa -20
@@ -61,15 +61,15 @@ mapa.width = anchoDelMapa
 mapa.height = alturaQueBuscamos
 
 class Mokepon{
-    constructor(nombre, foto, vida, fotoMapa, x = 10 , y = 10, ){
+    constructor(nombre, foto, vida, fotoMapa,  ){
         this.nombre=nombre
         this.foto=foto
         this.vida=vida
         this.ataques =[]
-        this.x = x
-        this.y = y
         this.ancho = 40
         this.alto = 40
+        this.x = aleatorio(0, mapa.width - this.ancho)
+        this.y = aleatorio(0, mapa.height - this.alto)
         this.mapaFoto = new Image()
         this.mapaFoto.src = fotoMapa
         this.velocidadX = 0
@@ -94,11 +94,11 @@ let ratatopo=new Mokepon('Ratatopo','./assets/mokepons_mokepon_Ratatopo_attack.p
 let tucanpaloma=new Mokepon('Tucapalom','./assets/mokepons_mokepon_tucapalma_attack.png',5,'./assets/TucaPalom.png')
 let pydas=new Mokepon('Pydas','./assets/mokepons_mokepon_pydos_attack.png',5,'./assets/Pydas.png')
 
-let hipodogeEnemigo=new Mokepon('Hipodoge','./assets/mokepons_mokepon_hipodoge_attack.png',5,'./assets/hipodoge.png',80 , 120)
-let capipepoEnemigo=new Mokepon('Capipepo','./assets/mokepons_mokepon_capipepo_attack.png',5,'./assets/capipepo.png',90 ,150)
-let ratatopoEnemigo=new Mokepon('Ratatopo','./assets/mokepons_mokepon_Ratatopo_attack.png',5,'./assets/ratigueya.png',200 , 190) 
-let tucanpalomaEnemigo=new Mokepon('Tucapalom','./assets/mokepons_mokepon_tucapalma_attack.png',5,'./assets/TucaPalom.png', 50 ,40)
-let pydasEnemigo=new Mokepon('Pydas','./assets/mokepons_mokepon_pydos_attack.png',5,'./assets/Pydas.png',150 ,90)
+let hipodogeEnemigo=new Mokepon('Hipodoge','./assets/mokepons_mokepon_hipodoge_attack.png',5,'./assets/hipodoge.png')
+let capipepoEnemigo=new Mokepon('Capipepo','./assets/mokepons_mokepon_capipepo_attack.png',5,'./assets/capipepo.png')
+let ratatopoEnemigo=new Mokepon('Ratatopo','./assets/mokepons_mokepon_Ratatopo_attack.png',5,'./assets/ratigueya.png') 
+let tucanpalomaEnemigo=new Mokepon('Tucapalom','./assets/mokepons_mokepon_tucapalma_attack.png',5,'./assets/TucaPalom.png' )
+let pydasEnemigo=new Mokepon('Pydas','./assets/mokepons_mokepon_pydos_attack.png',5,'./assets/Pydas.png')
 
 hipodoge.ataques.push(
     {nombre:'💧',id:'boton-agua'},
