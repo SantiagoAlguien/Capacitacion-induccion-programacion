@@ -1,0 +1,22 @@
+{
+  "name": "cursoplazi---copia",
+  "version": "1.0.0",
+  "main": "js2.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SantiagoRTI/Cursoplazi---copia.git"
+  },
+  "author": "yo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SantiagoRTI/Cursoplazi---copia/issues"
+  },
+  "homepage": "https://github.com/SantiagoRTI/Cursoplazi---copia#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
