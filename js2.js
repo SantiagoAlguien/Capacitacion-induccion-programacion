@@ -12,7 +12,6 @@ const ataquesDelJugador=document.getElementById('ataques-del-jugador')
 const ataqueDelEnemigo=document.getElementById('ataques-del-enemigo')
 const contenedorTarjetas= document.getElementById('contenedorTarjetas')
 const contenedorAtaques = document.getElementById('contenedorAtaques')
-
 const sectionVerMapa = document.getElementById('ver-mapa')
 const mapa = document.getElementById('mapa')
 
@@ -85,7 +84,7 @@ class Mokepon{
             )
         }
     
-    }
+}
 
 
 let hipodoge=new Mokepon('Hipodoge','./assets/mokepons_mokepon_hipodoge_attack.png',5,'./assets/hipodoge.png')
@@ -206,21 +205,6 @@ function iniciarJuego(){
     botonMascotaJugador.addEventListener('click',seleccionarMascotaJugador)
 
     botonReiniciar.addEventListener('click',reiniciarJuego )
-
-    unirseAlJuego()
-}
-
-function unirseAlJuego(){
-    fetch("http://localhost:8080/unirse")
-        .then(function (res) {
-            if (res.ok){
-                res.text()
-                    .then(function (respuesta){
-                        console.log(respuesta)
-                    })
-            }
-        })
-
 }
 
 function seleccionarMascotaJugador(){
@@ -254,7 +238,6 @@ function seleccionarMascotaJugador(){
 
 
 }
-
 
 function extraerAtaques(mascotaJugador){
     let ataques
@@ -485,7 +468,6 @@ function obtenerObjectoMascota(){
         if (mascotaJugador === mokepones[i].nombre){
             return mokepones[i]
         }
-        
     }
 }
 
@@ -493,30 +475,32 @@ function revisarColicion(enemigo){
     const arribaEnemigo = enemigo.y
     const abajoEnemigo = enemigo.y + enemigo.alto
     const derechaEnemigo = enemigo.x + enemigo.ancho
-    const izquierdaEnmigo = enemigo.x 
+    const izquierdaEnemigo = enemigo.x
 
     const arribaMascota = 
-    mascotaJugadorObjecto.y
+        mascotaJugadorObjecto.y
     const abajoMascota = 
-    mascotaJugadorObjecto.y + mascotaJugadorObjecto.alto
+        mascotaJugadorObjecto.y + mascotaJugadorObjecto.alto
     const derechaMascota = 
-    mascotaJugadorObjecto.x + mascotaJugadorObjecto.ancho
+        mascotaJugadorObjecto.x + mascotaJugadorObjecto.ancho
     const izquierdaMascota = 
-    mascotaJugadorObjecto.x 
+        mascotaJugadorObjecto.x
 
     if(
         abajoMascota < arribaEnemigo ||
         arribaMascota > abajoEnemigo ||
-        derechaMascota < izquierdaEnmigo ||
-        izquierdaMascota < derechaEnemigo 
-    ){
+        derechaMascota < izquierdaEnemigo ||
+        izquierdaMascota > derechaEnemigo
+    ) {
         return
     }
+
     detenerMovimiento()
     clearInterval(intervalo)
-    sectionSeleccionarAtaque.style.display='flex'
-    sectionVerMapa.style.display='none'
+    console.log('Se detecto una colision');
+    sectionSeleccionarAtaque.style.display = 'flex'
+    sectionVerMapa.style.display = 'none'
     seleccionarMascotaEnemigo(enemigo)
-    //alert("Si hay colision" + enemigo.nombre)
+    alert("Si hay colision con " + enemigo.nombre)
 }
 window.addEventListener('load',iniciarJuego)
