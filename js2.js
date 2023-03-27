@@ -12,6 +12,7 @@ const ataquesDelJugador=document.getElementById('ataques-del-jugador')
 const ataqueDelEnemigo=document.getElementById('ataques-del-enemigo')
 const contenedorTarjetas= document.getElementById('contenedorTarjetas')
 const contenedorAtaques = document.getElementById('contenedorAtaques')
+
 const sectionVerMapa = document.getElementById('ver-mapa')
 const mapa = document.getElementById('mapa')
 
@@ -84,7 +85,7 @@ class Mokepon{
             )
         }
     
-}
+    }
 
 
 let hipodoge=new Mokepon('Hipodoge','./assets/mokepons_mokepon_hipodoge_attack.png',5,'./assets/hipodoge.png')
@@ -205,6 +206,21 @@ function iniciarJuego(){
     botonMascotaJugador.addEventListener('click',seleccionarMascotaJugador)
 
     botonReiniciar.addEventListener('click',reiniciarJuego )
+
+    unirseAlJuego()
+}
+
+function unirseAlJuego(){
+    fetch("http://localhost:8080/unirse")
+        .then(function (res) {
+            if (res.ok){
+                res.text()
+                    .then(function (respuesta){
+                        console.log(respuesta)
+                    })
+            }
+        })
+
 }
 
 function seleccionarMascotaJugador(){
@@ -238,6 +254,7 @@ function seleccionarMascotaJugador(){
 
 
 }
+
 
 function extraerAtaques(mascotaJugador){
     let ataques
@@ -468,6 +485,7 @@ function obtenerObjectoMascota(){
         if (mascotaJugador === mokepones[i].nombre){
             return mokepones[i]
         }
+        
     }
 }
 
