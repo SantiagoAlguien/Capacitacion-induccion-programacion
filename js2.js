@@ -17,6 +17,7 @@ const sectionVerMapa = document.getElementById('ver-mapa')
 const mapa = document.getElementById('mapa')
 
 //Valores Globabales que las funciones dan el resultado
+let jugadorId = null
 let mokepones = []
 let ataqueJugador = []
 let ataqueEnemigo = []
@@ -217,6 +218,7 @@ function unirseAlJuego(){
                 res.text()
                     .then(function (respuesta){
                         console.log(respuesta)
+                        jugadorId = respuesta
                     })
             }
         })
@@ -247,7 +249,9 @@ function seleccionarMascotaJugador(){
             mascotaJugador = inputpydas.id
         }else{
              alert('Seleciona una mascota')
-        }
+    }
+    
+    seleccionarMokepon(mascotaJugador)
     extraerAtaques(mascotaJugador)
     sectionVerMapa.style.display = 'flex'
     InciarMapa()
@@ -255,6 +259,19 @@ function seleccionarMascotaJugador(){
 
 }
 
+
+function seleccionarMokepon(mascotaJugador){
+    fetch(`http://localhost:8080/mokepon/${jugadorId}`,{
+        method: "post",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            mokepon: mascotaJugador
+
+        })
+    })
+}
 
 function extraerAtaques(mascotaJugador){
     let ataques
@@ -415,6 +432,9 @@ function pintarCanvas(){
         mapa.height,
     )
     mascotaJugadorObjecto.pintarMokepon()
+
+    enviarPosicion(mascotaJugadorObjecto.x, mascotaJugadorObjecto.y)
+
     hipodogeEnemigo.pintarMokepon()
     capipepoEnemigo.pintarMokepon()
     ratatopoEnemigo.pintarMokepon()
@@ -428,6 +448,19 @@ function pintarCanvas(){
         revisarColicion(pydasEnemigo)
         revisarColicion(tucanpalomaEnemigo)
     }
+}
+
+function enviarPosicion(x, y){
+    fetch(`http://localhost:8080/mokepon/${jugadorId}/posicion`,{
+        method: "post",
+        headers: {
+            "Content-Type": "aplication/json"
+        },
+        body: JSON.stringify({
+            x,
+            y
+        })
+    })
 }
 
 function moverDerecha() {
