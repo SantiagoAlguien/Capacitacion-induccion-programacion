@@ -55,11 +55,15 @@ body{
   border-radius: 24px;
   margin: 10px;
   align-items: center;
+  user-select: none;
+
 }
 /* clase para poner el tamaño debido a las imagenes de los */
 .clases-botones img{
     width: 90px;
 }
+
+
 
 /* Esta clase encierra todos los botones de los moquepones en un cuadrado */
 .botones-encerrados, .tarjetas-ataque
