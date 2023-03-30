@@ -19,6 +19,7 @@ const mapa = document.getElementById('mapa')
 //Valores Globabales que las funciones dan el resultado
 let jugadorId = null
 let mokepones = []
+let mokeponesEnemigos = []
 let ataqueJugador = []
 let ataqueEnemigo = []
 let opcionDeMokepones
@@ -393,11 +394,9 @@ function pintarCanvas(){
 
     enviarPosicion(mascotaJugadorObjecto.x, mascotaJugadorObjecto.y)
 
-    hipodogeEnemigo.pintarMokepon()
-    capipepoEnemigo.pintarMokepon()
-    ratatopoEnemigo.pintarMokepon()
-    tucanpalomaEnemigo.pintarMokepon()
-    pydasEnemigo.pintarMokepon()
+    mokeponesEnemigos.forEach(function (mokepon){
+        mokepon.pintarMokepon()
+    })
 
     if (mascotaJugadorObjecto.velocidadX !== 0 || mascotaJugadorObjecto.velocidadY !== 0){
         revisarColicion(hipodogeEnemigo)
@@ -424,7 +423,7 @@ function enviarPosicion(x, y){
             res.json()
                 .then(function ({ enemigos }){
                     console.log(enemigos)
-                    enemigos.forEach(function (enemigo){
+                    mokeponesEnemigos = enemigos.map(function (enemigo){
                         let mokeponEnemigo = null
                         const mokeponNombre = enemigo.mokepon.nombre || ""
                         if (mokeponNombre === "Hipodoge"){
@@ -441,7 +440,8 @@ function enviarPosicion(x, y){
 
                         mokeponEnemigo.x = enemigo.x
                         mokeponEnemigo.y = enemigo.y
-                        mokeponEnemigo.pintarMokepon()
+
+                        return mokeponEnemigo
                     })
                 })
         }
