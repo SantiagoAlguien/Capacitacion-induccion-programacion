@@ -1,0 +1,33 @@
+<html>
+    <body>
+        <h1>PROGRAMA DE ADIVINANZA</h1>
+        <meta charset="utf-8"/>
+        <script>
+            function SaltarLinea(){
+                document.write("<br>");
+                document.write("<br>");
+                document.write("<br>");
+            }
+
+            function imprimir(frase){
+                document.write(frase);
+                SaltarLinea();
+            }
+            var NumeroMultiplicado = 1
+            imprimir("WHILE")
+            while ( NumeroMultiplicado <= 10){
+                imprimir (5 * NumeroMultiplicado);
+                NumeroMultiplicado = NumeroMultiplicado +1;
+            }
+
+            imprimir("FOR")
+            for(var NumeroMultiplicado = 1; NumeroMultiplicado <=10; NumeroMultiplicado = NumeroMultiplicado +1){
+                imprimir (5 * NumeroMultiplicado);
+            }
+        </script>
+    </body>
+    <head>
+
+    </head>
+
+</html>
