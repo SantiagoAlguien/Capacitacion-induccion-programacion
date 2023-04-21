@@ -1,0 +1,28 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    var pantalla = document.querySelector("canvas");
+    var pincel = pantalla.getContext("2d");
+    pincel.fillStyle = "lightgray";
+    pincel.fillRect(0, 0, 600, 400);
+
+    function dibujarCirculo(x, y, radio, color) {
+
+        pincel.fillStyle = color;
+        pincel.beginPath();
+        pincel.arc(x, y, radio, 0, 2*3.14);
+        pincel.fill();
+    }
+
+    function dibujaflor(x,y){
+    dibujarCirculo(300, 200, 30,"red")
+    dibujarCirculo(360, 200, 30,"blue")
+    dibujarCirculo(240, 200, 30,"black")
+    dibujarCirculo(300, 260, 30,"green")
+    dibujarCirculo(300, 140, 30,"yellow")
+    }
+    dibujaflor(300,200)
+
+    dibujaflor(300,400)
+</script>

@@ -1,0 +1,28 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+    function dibujarcuadrador(x,y,color){
+    var pantalla = document.querySelector("canvas");
+    var pincel = pantalla.getContext("2d");
+
+    pincel.fillStyle = color //propiedad
+    pincel.fillRect(x,y,50,50); //funcion
+    pincel.strokeStyle = "black"
+    pincel.strokeRect(x,y,50,50);
+    }
+
+    var x = 0
+    while(x< 600){
+        dibujarcuadrador(x,0,"green");
+
+        x = x + 50;
+    }
+
+    for(var x = 0; x<600; x=x +50){
+        dibujarcuadrador(x,0,"green");
+        dibujarcuadrador(x,50,"blue");
+        dibujarcuadrador(x,100,"black");
+    }
+
+
+</script>
