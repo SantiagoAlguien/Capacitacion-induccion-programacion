@@ -1,53 +1,40 @@
-body{
-    
-}
-
-#banner{
-    width:100%;
-}
-
-.principal{
-    background: #CCCCCC;
-    padding: 20px;
-}
-
-h1{
-    text-align: center;
-}
-
 p{
     text-align: center;
+     background: rgb(131, 131, 131);
+}
+.Titulocentral{
+    text-align: center;
 }
 
-em strong{
-    color:red;
+body{
+    background-color: rgb(255, 255, 255);
 }
 
-#mision{
+ em strong{
+     color: brown;
+}
+
+.TituloPrincipal{
+    padding-left: 30px;
+}
+
+
+#vision{
     font-size: 20px;
 }
 
-.diferenciales{
-    background: #FFFFFF;
-    padding: 30px;
+#Texto{
+    background: red;
 }
-
-h2{
-    text-align: center;
+#imagen{
+    width: 100%;
+    height: 100%;
 }
 
 .items{
     font-style: italic;
 }
 
-ul{
-    display: inline-block;
-    vertical-align: top;
-    width: 20%;
-    margin-right: 15%;
+.diferenciales{
+    background: white;
 }
-
-.imagenDiferenciales{
-    width: 50%;
-}
-
