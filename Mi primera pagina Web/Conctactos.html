@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>C</title>
+        <link rel="stylesheet" href="reset.css">
+        <link rel="stylesheet" href="Style.css">
+        
+    </head>
+    <body>
+        <HEader>
+            <div class="caja">
+                <h1 ><img src="imagenes/logo.png" ></h1>
+                <nav>
+                    <ul class="navegacion">
+                        <li><a href="index.html"> HOME</a></li>
+                        <li><a href="productos.html"> PRODUCTOS</a></li>
+                        <li><a href="Conctactos.html"> CONTACTOS</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </HEader>
+        <main>
+            <form>
+                <label for="nombreapellido">Nombre y apellido</label>
+                <input type="text" id="nombreapellido" class="input-patron">
+
+                <label for="correoelectronico">Correo</label>
+                <input type="text" id="correoelectronico" class="input-patron">
+
+                <label for="telefono">Telefono</label>
+                <input type="text" id="telefono" class="input-patron">
+
+                <label for="mensaje">Mensaje</label>
+                <textarea id="mensaje" cols="70" rows="10"></textarea>
+
+                <div>
+                    <p class="test" id="test">Como le gustaria que lo conctactemos?</p>
+
+                    <label for="radio-email"><input type="radio" name="conctacto" value="Email" id="radio-email">Email</label>
+
+                    <label for="radio-telefono"><input type="radio" name="conctacto" value="telefono" id="radio-telefono">telefono</label>
+                
+                    <label for="radio-whatsapp"><input type="radio" name="conctacto" value="whatsapp" id="radio-whatsapp">whatsapp</label>
+                </div>
+
+                <div>
+                    <p>¿En que horario le gustaria ser atendido?</p>
+                    <select>
+                        <option>Mañana</option> 
+                        <option>Tarde</option>
+                        <option>Noche</option>
+                    </select>
+                </div>
+                <label class="checkbox"><input type="checkbox"> Le gustaria recibir novedades de la barberia¨?</label>
+                
+                <input type="submit" value="Envier formulario">
+            </form>
+        </main>
+        <footer>
+            <img src="imagenes/logo-blanco.png">
+            <p class="Copyright">&copy Copyright Baberia santi 2023</p>
+        </footer>
+    </body>
+</html>  
