@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>C</title>
+        <title>Contactos</title>
         <link rel="stylesheet" href="reset.css">
         <link rel="stylesheet" href="Style.css">
         
@@ -24,25 +24,27 @@
         <main>
             <form>
                 <label for="nombreapellido">Nombre y apellido</label>
-                <input type="text" id="nombreapellido" class="input-patron">
+                <input type="text" id="nombreapellido" class="input-patron" required>
 
                 <label for="correoelectronico">Correo</label>
-                <input type="text" id="correoelectronico" class="input-patron">
+                <input type="email" id="correoelectronico" class="input-patron" required
+                placeholder="email@email.com">
 
                 <label for="telefono">Telefono</label>
-                <input type="text" id="telefono" class="input-patron">
+                <input type="number" id="telefono" class="input-patron" required
+                placeholder="(XX) XXXX XXXX">
 
                 <label for="mensaje">Mensaje</label>
                 <textarea id="mensaje" cols="70" rows="10"></textarea>
 
                 <div>
-                    <p class="test" id="test">Como le gustaria que lo conctactemos?</p>
+                    <p class="test" id="test">¿Como le gustaria que lo conctactemos?</p>
 
                     <label for="radio-email"><input type="radio" name="conctacto" value="Email" id="radio-email">Email</label>
 
                     <label for="radio-telefono"><input type="radio" name="conctacto" value="telefono" id="radio-telefono">telefono</label>
                 
-                    <label for="radio-whatsapp"><input type="radio" name="conctacto" value="whatsapp" id="radio-whatsapp">whatsapp</label>
+                    <label for="radio-whatsapp"><input type="radio" name="conctacto" value="whatsapp" id="radio-whatsapp" checked>whatsapp</label>
                 </div>
 
                 <div>
@@ -53,7 +55,7 @@
                         <option>Noche</option>
                     </select>
                 </div>
-                <label class="checkbox"><input type="checkbox"> Le gustaria recibir novedades de la barberia¨?</label>
+                <label class="checkbox"><input type="checkbox" checked>¿Le gustaria recibir novedades de la barberia¨?</label>
                 
                 <input type="submit" value="Envier formulario">
             </form>
